@@ -1,22 +1,157 @@
 aid: metrilo
 name: Metrilo
-description: Metrilo is a company surfaced as a portfolio company of speedinvest and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Metrilo is a plug-and-play ecommerce growth platform that combines real-time
+  analytics, an ecommerce CRM, and email marketing for online brands. Founded in
+  2014 and acquired by Brevo (formerly Sendinblue) in 2021, Metrilo tracks
+  visitor and customer behavior, builds rich customer profiles with 30+
+  segmentation filters, and powers retention-focused email campaigns. Developers
+  integrate via official plugins for WooCommerce, Magento, and OpenCart, a
+  client-side JavaScript tracking library (window.metrilo), and a server-side
+  ingestion API at trk.mtrl.me/v2 that pushes customers, categories, products,
+  and orders using an API Token plus an HMAC-SHA256 X-Digest request signature.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.metrilo.com/images/metrilo-1200x628.png
 url: https://raw.githubusercontent.com/api-evangelist/metrilo/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - speedinvest
+x-acquired-by: brevo
 x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Ecommerce
+- Analytics
+- CRM
+- Email Marketing
+- Customer Retention
+- Tracking
+- Marketing
+apis:
+- aid: metrilo:metrilo-categories-api
+  name: Metrilo Categories API
+  description: The Categories API from Metrilo — 2 operation(s) for categories.
+  humanURL: https://github.com/Metrilo/custom-integration
+  baseURL: https://trk.mtrl.me/v2
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/metrilo-categories-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/Metrilo/custom-integration
+- aid: metrilo:metrilo-customers-api
+  name: Metrilo Customers API
+  description: The Customers API from Metrilo — 4 operation(s) for customers.
+  humanURL: https://github.com/Metrilo/custom-integration
+  baseURL: https://trk.mtrl.me/v2
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/metrilo-customers-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/Metrilo/custom-integration
+- aid: metrilo:metrilo-orders-api
+  name: Metrilo Orders API
+  description: The Orders API from Metrilo — 2 operation(s) for orders.
+  humanURL: https://github.com/Metrilo/custom-integration
+  baseURL: https://trk.mtrl.me/v2
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/metrilo-orders-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/Metrilo/custom-integration
+- aid: metrilo:metrilo-products-api
+  name: Metrilo Products API
+  description: The Products API from Metrilo — 2 operation(s) for products.
+  humanURL: https://github.com/Metrilo/custom-integration
+  baseURL: https://trk.mtrl.me/v2
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/metrilo-products-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/Metrilo/custom-integration
+common:
+- type: DomainSecurity
+  url: security/metrilo-domain-security.yml
+- type: DeveloperPortal
+  url: https://github.com/Metrilo/custom-integration
+- type: Documentation
+  url: https://docs.metrilo.com
+- type: APIReference
+  url: https://github.com/Metrilo/custom-integration
+- type: GettingStarted
+  url: https://docs.metrilo.com/en/collections/57629-getting-started-with-metrilo
+- type: Support
+  url: https://docs.metrilo.com
+- type: Blog
+  url: https://www.metrilo.com/blog
+- type: GitHubOrganization
+  url: https://github.com/Metrilo
+- type: Pricing
+  url: https://www.metrilo.com/pricing
+- type: SignUp
+  url: https://www.metrilo.com/signup
+- type: Login
+  url: https://app.metrilo.com
+- type: TermsOfService
+  url: https://www.metrilo.com/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.metrilo.com/privacy-policy
+- type: Authentication
+  url: authentication/metrilo-authentication.yml
+- type: Conventions
+  url: conventions/metrilo-conventions.yml
+- type: ErrorCatalog
+  url: errors/metrilo-problem-types.yml
+- type: DataModel
+  url: data-model/metrilo-data-model.yml
+- type: MCPServer
+  url: mcp/metrilo-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Packages
+  url: packages/metrilo-packages.yml
+- type: SDKs
+  url: packages/metrilo-packages.yml
+- type: Components
+  url: components/metrilo-components.yml
+- type: Lifecycle
+  url: lifecycle/metrilo-lifecycle.yml
+- type: Conformance
+  url: conformance/metrilo-conformance.yml
+- type: Compliance
+  url: https://docs.metrilo.com/en/articles/1613060-metrilo-and-gdpr
+- type: LLMsTxt
+  url: llms/metrilo-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1
