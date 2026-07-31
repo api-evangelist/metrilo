@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Metrilo/custom-integration
+note: >-
+  Metrilo ships a client-side JavaScript tracking library loaded via a script
+  tag, exposing a global `window.metrilo` object for front-end event tracking
+  and form auto-integration.
+families:
+  - name: Metrilo tracking library
+    loader: '<script src="https://trk.mtrl.me/tracking.js?token=YOUR_TOKEN"></script>'
+    global: window.metrilo
+    kind: embedded-javascript
+    functions:
+      - { name: identify, params: 'email', purpose: Link anonymous session to a customer }
+      - { name: customerDetails, params: '{firstName,lastName,phoneNumber,subscribed}', purpose: Update customer profile }
+      - { name: viewPage, params: 'url, {name}', purpose: Track a page view }
+      - { name: viewArticle, params: 'articleId, {name,url}', purpose: Track an article view }
+      - { name: viewCategory, params: 'categoryId', purpose: Track a category view }
+      - { name: viewProduct, params: 'productId', purpose: Track a product view }
+      - { name: search, params: 'query, url', purpose: Track a search }
+      - { name: addToCart, params: 'productId, quantity', purpose: Track cart addition }
+      - { name: removeFromCart, params: 'productId, quantity', purpose: Track cart removal }
+      - { name: checkout, params: 'none', purpose: Track checkout initiation }
+      - { name: applyTags, params: 'tags[]', purpose: Apply customer tags }
+      - { name: customEvent, params: 'name', purpose: Send a custom event }
+      - { name: integrateForm, params: 'config', purpose: Auto-integrate a form submission }

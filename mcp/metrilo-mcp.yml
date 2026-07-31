@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/metrilo-tracking-openapi.yml
+note: >-
+  Metrilo publishes no official MCP server. This is a candidate tool list
+  derived one-to-one from the documented tracking/CRM operations, for a
+  potential MCP wrapper. Not published by Metrilo.
+server:
+  name: metrilo
+  transport: http
+tools:
+  - name: create_customer
+    description: Create or update a single customer (by email).
+    source_operation: openapi/metrilo-tracking-openapi.yml#createCustomer
+  - name: batch_customers
+    description: Bulk import customers.
+    source_operation: openapi/metrilo-tracking-openapi.yml#batchCustomers
+  - name: tag_customer
+    description: Add tags to a customer.
+    source_operation: openapi/metrilo-tracking-openapi.yml#tagCustomer
+  - name: untag_customer
+    description: Remove tags from a customer.
+    source_operation: openapi/metrilo-tracking-openapi.yml#untagCustomer
+  - name: create_category
+    description: Create or update a single category.
+    source_operation: openapi/metrilo-tracking-openapi.yml#createCategory
+  - name: batch_categories
+    description: Bulk import categories.
+    source_operation: openapi/metrilo-tracking-openapi.yml#batchCategories
+  - name: create_product
+    description: Create or update a single product.
+    source_operation: openapi/metrilo-tracking-openapi.yml#createProduct
+  - name: batch_products
+    description: Bulk import products.
+    source_operation: openapi/metrilo-tracking-openapi.yml#batchProducts
+  - name: create_order
+    description: Create or update a single order.
+    source_operation: openapi/metrilo-tracking-openapi.yml#createOrder
+  - name: batch_orders
+    description: Bulk import orders.
+    source_operation: openapi/metrilo-tracking-openapi.yml#batchOrders

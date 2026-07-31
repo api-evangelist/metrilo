@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Metrilo/custom-integration
+docs: https://github.com/Metrilo/custom-integration
+summary:
+  types: [apiKey]
+  api_key_in: [header, body]
+  oauth2_flows: []
+  note: >-
+    Metrilo uses project-scoped credentials (API Token + API Secret) obtained
+    from Settings -> Installation. Requests carry the API Token in the JSON
+    body; every backend endpoint except POST /customer additionally requires an
+    X-Digest header holding an HMAC-SHA256 of the raw request body keyed with
+    the API Secret. There is no OAuth surface.
+credentials:
+  - name: API Token
+    where: request body field `token`
+    obtained_from: Settings -> Installation (per project)
+  - name: API Secret
+    where: HMAC key for the X-Digest header (never transmitted)
+    obtained_from: Settings -> Installation (per project)
+schemes:
+  - name: xDigest
+    type: apiKey
+    in: header
+    parameter: X-Digest
+    algorithm: HMAC-SHA256
+    message: raw JSON request body
+    key: API Secret
+    required_for: all backend endpoints except POST /customer
+    sources: [openapi/metrilo-tracking-openapi.yml]
+  - name: token
+    type: apiKey
+    in: body
+    parameter: token
+    required_for: all requests
+    sources: [openapi/metrilo-tracking-openapi.yml]

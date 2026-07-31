@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.metrilo.com/en/articles/1613060-metrilo-and-gdpr
+note: >-
+  Standards conformance derived from Metrilo's documented behavior plus its
+  published GDPR posture (GDPR compliance page, data encryption, named Data
+  Protection Officer, Data Processing Agreement on request).
+standards:
+  - id: gdpr
+    conforms: true
+    evidence: Published GDPR compliance docs, DPO named, DPA available, data-encryption article.
+    docs: https://docs.metrilo.com/en/articles/1613060-metrilo-and-gdpr
+  - id: hmac-request-signing
+    conforms: true
+    evidence: X-Digest header carries an HMAC-SHA256 of the request body keyed with the API Secret.
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth surface; project token + HMAC only.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are bare HTTP status codes; no application/problem+json documented.
+  - id: openapi
+    conforms: false
+    evidence: Metrilo publishes no OpenAPI (API Evangelist maintains a generated one).
+compliance_program:
+  gdpr:
+    published: true
+    dpo: true
+    dpa_on_request: true
+    data_encryption: true
+    docs: https://docs.metrilo.com/en/articles/1613060-metrilo-and-gdpr

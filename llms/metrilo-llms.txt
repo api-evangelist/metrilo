@@ -1,0 +1,193 @@
+# Metrilo Help Center
+
+> Help center for Metrilo
+
+## About Metrilo
+
+- [What is Metrilo?](http://docs.metrilo.com/en/articles/918551-what-is-metrilo.md)
+- [How is Metrilo different from Google Analytics?](http://docs.metrilo.com/en/articles/918576-how-is-metrilo-different-from-google-analytics.md)
+- [How is Metrilo different from Mailchimp?](http://docs.metrilo.com/en/articles/918585-how-is-metrilo-different-from-mailchimp.md)
+- [How is Metrilo integrated with your website?](http://docs.metrilo.com/en/articles/915361-how-is-metrilo-integrated-with-your-website.md)
+- [Does Metrilo slow down my website?](http://docs.metrilo.com/en/articles/915376-does-metrilo-slow-down-my-website.md)
+- [Does Metrilo conflict with other plugins on my website?](http://docs.metrilo.com/en/articles/915429-does-metrilo-conflict-with-other-plugins-on-my-website.md)
+- [Is Metrilo for me?](http://docs.metrilo.com/en/articles/918606-is-metrilo-for-me.md)
+- [Switching to Metrilo from another email marketing tool](http://docs.metrilo.com/en/articles/915444-switching-to-metrilo-from-another-email-marketing-tool.md)
+- [Metrilo plans & pricing](http://docs.metrilo.com/en/articles/915515-metrilo-plans-pricing.md)
+- [Metrilo and GDPR](http://docs.metrilo.com/en/articles/1613060-metrilo-and-gdpr.md): Metrilo's GDPR compliance
+- [What do the Metrilo customers need to do to be compliant with GDPR?](http://docs.metrilo.com/en/articles/1925099-what-do-the-metrilo-customers-need-to-do-to-be-compliant-with-gdpr.md): Recommendations
+- [How to request my Metrilo Data Processing Agreement?](http://docs.metrilo.com/en/articles/1925137-how-to-request-my-metrilo-data-processing-agreement.md)
+- [How to collect consent from my users to send email marketing campaigns](http://docs.metrilo.com/en/articles/1925151-how-to-collect-consent-from-my-users-to-send-email-marketing-campaigns.md)
+- [How to make my pop-ups and forms GDPR compliant?](http://docs.metrilo.com/en/articles/1925188-how-to-make-my-pop-ups-and-forms-gdpr-compliant.md)
+- [How to request my users' data from Metrilo?](http://docs.metrilo.com/en/articles/1925198-how-to-request-my-users-data-from-metrilo.md)
+- [How to exercise a user's right to be forgotten in Metrilo?](http://docs.metrilo.com/en/articles/1925207-how-to-exercise-a-user-s-right-to-be-forgotten-in-metrilo.md)
+- [Metrilo & Data encryption](http://docs.metrilo.com/en/articles/1925217-metrilo-data-encryption.md)
+- [Metrilo's Data Protection Officer](http://docs.metrilo.com/en/articles/1925218-metrilo-s-data-protection-officer.md)
+
+## Installation
+
+- [Integrating Metrilo with Shopify](http://docs.metrilo.com/en/articles/504121-integrating-metrilo-with-shopify.md)
+- [Integrating Metrilo with WooCommerce](http://docs.metrilo.com/en/articles/504113-integrating-metrilo-with-woocommerce.md)
+- [Integrating Metrilo with Magento 2](http://docs.metrilo.com/en/articles/1326908-integrating-metrilo-with-magento-2.md)
+- [Integrating Metrilo with Magento 1](http://docs.metrilo.com/en/articles/1846137-integrating-metrilo-with-magento-1.md)
+- [Magento 2 plugin command-line installation](http://docs.metrilo.com/en/articles/1518941-magento-2-plugin-command-line-installation.md): Tutorial on how to install the Metrilo plugin on Magento 2 installations via the command line tools.
+- [Installing Magento 2 plugin with Composer from Github](http://docs.metrilo.com/en/articles/1954381-installing-magento-2-plugin-with-composer-from-github.md)
+- [Integrating Metrilo with a custom website](http://docs.metrilo.com/en/articles/915276-integrating-metrilo-with-a-custom-website.md)
+- [How to be sure if the integration went well](http://docs.metrilo.com/en/articles/915291-how-to-be-sure-if-the-integration-went-well.md)
+
+## Metrilo Accounts
+
+- [Account setup](http://docs.metrilo.com/en/articles/947649-account-setup.md)
+- [How to use Metrilo for client sites if you’re an agency or a consultant](http://docs.metrilo.com/en/articles/947644-how-to-use-metrilo-for-client-sites-if-you-re-an-agency-or-a-consultant.md)
+- [How to add multiple websites as different projects to one Metrilo account](http://docs.metrilo.com/en/articles/947640-how-to-add-multiple-websites-as-different-projects-to-one-metrilo-account.md)
+- [How to add multiple websites to one Metrilo project](http://docs.metrilo.com/en/articles/947637-how-to-add-multiple-websites-to-one-metrilo-project.md)
+- [Troubleshooting when adding multiple websites to one project](http://docs.metrilo.com/en/articles/947636-troubleshooting-when-adding-multiple-websites-to-one-project.md)
+- [How to restrict IP addresses](http://docs.metrilo.com/en/articles/947632-how-to-restrict-ip-addresses.md)
+- [How to set my account preferences](http://docs.metrilo.com/en/articles/947628-how-to-set-my-account-preferences.md)
+- [Invoices](http://docs.metrilo.com/en/articles/947658-invoices.md)
+- [Payment methods](http://docs.metrilo.com/en/articles/947655-payment-methods.md)
+
+## Getting Started with Metrilo
+
+- [How to import a CSV file with leads into your customer database](http://docs.metrilo.com/en/articles/3055109-how-to-import-a-csv-file-with-leads-into-your-customer-database.md): This article explains how you can import a CSV file with customer leads to your customer database in Metrilo
+- [First steps with Metrilo](http://docs.metrilo.com/en/articles/504098-first-steps-with-metrilo.md)
+- [How to import previous orders and customers to Metrilo?](http://docs.metrilo.com/en/articles/504114-how-to-import-previous-orders-and-customers-to-metrilo.md)
+- [Verify the historical import into Metrilo](http://docs.metrilo.com/en/articles/915541-verify-the-historical-import-into-metrilo.md)
+- [Set up your order statuses](http://docs.metrilo.com/en/articles/761587-set-up-your-order-statuses.md)
+- [Invite your team to Metrilo](http://docs.metrilo.com/en/articles/761566-invite-your-team-to-metrilo.md)
+- [Setting up a custom domain with Metrilo](http://docs.metrilo.com/en/articles/504111-setting-up-a-custom-domain-with-metrilo.md)
+- [Setting up a GoDaddy custom domain with Metrilo](http://docs.metrilo.com/en/articles/2096611-setting-up-a-godaddy-custom-domain-with-metrilo.md)
+- [How to export reports from Metrilo in CSV format?](http://docs.metrilo.com/en/articles/2140580-how-to-export-reports-from-metrilo-in-csv-format.md)
+- [How to use the “Dashboard”](http://docs.metrilo.com/en/articles/504103-how-to-use-the-dashboard.md)
+
+## Integrations
+
+- [Integrating Privy with Metrilo](http://docs.metrilo.com/en/articles/3016224-integrating-privy-with-metrilo.md)
+- [How often do the integrations sync?](http://docs.metrilo.com/en/articles/3692894-how-often-do-the-integrations-sync.md)
+- [Integrating MailMunch with Metrilo](http://docs.metrilo.com/en/articles/1268411-integrating-mailmunch-with-metrilo.md)
+- [Integrating Sumo with Metrilo](http://docs.metrilo.com/en/articles/915347-integrating-sumo-with-metrilo.md)
+- [How to send email subscribers to Metrilo?](http://docs.metrilo.com/en/articles/504097-how-to-send-email-subscribers-to-metrilo.md)
+
+## Essential Plan
+
+- [Dashboard on the Essential Plan](http://docs.metrilo.com/en/articles/2791599-dashboard-on-the-essential-plan.md)
+- [Getting started with Marketing Performance Tab](http://docs.metrilo.com/en/articles/2473950-getting-started-with-marketing-performance-tab.md)
+- [How the Marketing Performance tab can help you](http://docs.metrilo.com/en/articles/2476656-how-the-marketing-performance-tab-can-help-you.md)
+- [Acquisition Channels in eCommerce: How to best measure them with Marketing Performance](http://docs.metrilo.com/en/articles/2491513-acquisition-channels-in-ecommerce-how-to-best-measure-them-with-marketing-performance.md)
+- [Conversion Rate Analysis](http://docs.metrilo.com/en/articles/504122-conversion-rate-analysis.md)
+- [How do I track my influencers?](http://docs.metrilo.com/en/articles/3692899-how-do-i-track-my-influencers.md)
+- [UTM tags and how to use them](http://docs.metrilo.com/en/articles/2476771-utm-tags-and-how-to-use-them.md)
+- [Custom referral campaign tracking in Metrilo](http://docs.metrilo.com/en/articles/2474214-custom-referral-campaign-tracking-in-metrilo.md)
+- [Getting started with Revenue Breakdown](http://docs.metrilo.com/en/articles/944563-getting-started-with-revenue-breakdown.md)
+- [How to analyze your revenue with Metrilo](http://docs.metrilo.com/en/articles/2805223-how-to-analyze-your-revenue-with-metrilo.md)
+- [How to use Metrilo to mark significant events for my business](http://docs.metrilo.com/en/articles/945005-how-to-use-metrilo-to-mark-significant-events-for-my-business.md)
+- [How to analyze New vs Returning customers for my business](http://docs.metrilo.com/en/articles/944998-how-to-analyze-new-vs-returning-customers-for-my-business.md)
+- [How to break down my revenue by traffic sources](http://docs.metrilo.com/en/articles/944988-how-to-break-down-my-revenue-by-traffic-sources.md)
+- [How to breakdown my revenue by order statuses](http://docs.metrilo.com/en/articles/944960-how-to-breakdown-my-revenue-by-order-statuses.md)
+- [How to analyze the coupons used by my customers](http://docs.metrilo.com/en/articles/944995-how-to-analyze-the-coupons-used-by-my-customers.md)
+- [Payment method analysis](http://docs.metrilo.com/en/articles/944959-payment-method-analysis.md)
+- [How to analyze revenue by location](http://docs.metrilo.com/en/articles/944950-how-to-analyze-revenue-by-location.md)
+- [Device-based analysis](http://docs.metrilo.com/en/articles/944939-device-based-analysis.md)
+- [Revenue Breakdown and the Marketing Performance tab analysis](http://docs.metrilo.com/en/articles/2805188-revenue-breakdown-and-the-marketing-performance-tab-analysis.md)
+- [Funnels Reports](http://docs.metrilo.com/en/articles/2805424-funnels-reports.md)
+- [How to analyze the performance of my products and how to get product insights](http://docs.metrilo.com/en/articles/947582-how-to-analyze-the-performance-of-my-products-and-how-to-get-product-insights.md)
+- [Create the best-converting bundles thanks to product correlation insights](http://docs.metrilo.com/en/articles/728321-create-the-best-converting-bundles-thanks-to-product-correlation-insights.md): Product performance, bundle promotions, conversion rate
+
+## Pro Plan
+
+- [How Retention Analysis helps you make more sales](http://docs.metrilo.com/en/articles/2808651-how-retention-analysis-helps-you-make-more-sales.md)
+- [The Pro plan on top of the Essential plan](http://docs.metrilo.com/en/articles/2805127-the-pro-plan-on-top-of-the-essential-plan.md)
+- [Retention dashboard](http://docs.metrilo.com/en/articles/947801-retention-dashboard.md)
+- [The Time between orders Metric](http://docs.metrilo.com/en/articles/947599-the-time-between-orders-metric.md)
+- [Understanding your customer lifecycle](http://docs.metrilo.com/en/articles/936650-understanding-your-customer-lifecycle.md)
+- [Understanding Cohort Performance](http://docs.metrilo.com/en/articles/2808715-understanding-cohort-performance.md)
+- [Optimize your marketing campaigns and traffic sources](http://docs.metrilo.com/en/articles/2808666-optimize-your-marketing-campaigns-and-traffic-sources.md)
+- [Evaluate and optimize your use of coupons for greater returns](http://docs.metrilo.com/en/articles/936911-evaluate-and-optimize-your-use-of-coupons-for-greater-returns.md)
+- [How to use retention analysis by cohorts and by source/ medium to optimize your marketing](http://docs.metrilo.com/en/articles/2741156-how-to-use-retention-analysis-by-cohorts-and-by-source-medium-to-optimize-your-marketing.md)
+- [Plan your remarketing for the best possible time](http://docs.metrilo.com/en/articles/936777-plan-your-remarketing-for-the-best-possible-time.md)
+- [Put forward the products that make you most lifetime value out of customers](http://docs.metrilo.com/en/articles/2808675-put-forward-the-products-that-make-you-most-lifetime-value-out-of-customers.md)
+- [Leverage seasonality with cohort analysis](http://docs.metrilo.com/en/articles/937022-leverage-seasonality-with-cohort-analysis.md)
+- [Getting started with the Customer Database](http://docs.metrilo.com/en/articles/918616-getting-started-with-the-customer-database.md)
+- [Customer segments in Metrilo](http://docs.metrilo.com/en/articles/944418-customer-segments-in-metrilo.md)
+- [Applying the filters to specific time periods](http://docs.metrilo.com/en/articles/3478259-applying-the-filters-to-specific-time-periods.md)
+- [How to use customer tags](http://docs.metrilo.com/en/articles/944428-how-to-use-customer-tags.md)
+- [How to export customer lists to use with other email marketing softwares](http://docs.metrilo.com/en/articles/944435-how-to-export-customer-lists-to-use-with-other-email-marketing-softwares.md)
+- [Create and edit customer profiles in the Customer Database](http://docs.metrilo.com/en/articles/3190902-create-and-edit-customer-profiles-in-the-customer-database.md)
+- [Email communication log in customer profiles](http://docs.metrilo.com/en/articles/1640943-email-communication-log-in-customer-profiles.md)
+- [Build highly convertible remarketing campaigns. Learn how to segment your customers and import lists into Facebook.](http://docs.metrilo.com/en/articles/678769-build-highly-convertible-remarketing-campaigns-learn-how-to-segment-your-customers-and-import-lists-into-facebook.md)
+- [Revenue analysis and the Customer Database tab](http://docs.metrilo.com/en/articles/945008-revenue-analysis-and-the-customer-database-tab.md)
+- [How to delete/merge test customers](http://docs.metrilo.com/en/articles/944438-how-to-delete-merge-test-customers.md)
+- [How to use “Live View”](http://docs.metrilo.com/en/articles/504100-how-to-use-live-view.md)
+
+## Premium Plan
+
+- [The Premium plan on top of the Pro plan](http://docs.metrilo.com/en/articles/2805141-the-premium-plan-on-top-of-the-pro-plan.md)
+- [Ways to create emails in Metrilo](http://docs.metrilo.com/en/articles/2855032-ways-to-create-emails-in-metrilo.md)
+- [How to send my first newsletter](http://docs.metrilo.com/en/articles/964559-how-to-send-my-first-newsletter.md)
+- [Scheduling emails to be sent at a certain time](http://docs.metrilo.com/en/articles/3159402-scheduling-emails-to-be-sent-at-a-certain-time.md)
+- [How to use the “Email Performance” feature](http://docs.metrilo.com/en/articles/504094-how-to-use-the-email-performance-feature.md)
+- [Send personalized cross-sell email campaigns based on purchasing behavior](http://docs.metrilo.com/en/articles/681236-send-personalized-cross-sell-email-campaigns-based-on-purchasing-behavior.md)
+- [Identify inactive customers and re-activate them with an email](http://docs.metrilo.com/en/articles/681544-identify-inactive-customers-and-re-activate-them-with-an-email.md)
+- [Identify heavy coupon users and send them special email offers](http://docs.metrilo.com/en/articles/725496-identify-heavy-coupon-users-and-send-them-special-email-offers.md)
+- [How often should I send emails?](http://docs.metrilo.com/en/articles/944753-how-often-should-i-send-emails.md)
+- [How to get people to open my emails?](http://docs.metrilo.com/en/articles/944773-how-to-get-people-to-open-my-emails.md)
+- [Why sender reputation matters?](http://docs.metrilo.com/en/articles/944747-why-sender-reputation-matters.md)
+- [What are bounced emails in Metrilo?](http://docs.metrilo.com/en/articles/1202867-what-are-bounced-emails-in-metrilo.md)
+- [Don't sound like a spammer!](http://docs.metrilo.com/en/articles/944764-don-t-sound-like-a-spammer.md)
+- [How to add an unsubscribe link in your emails?](http://docs.metrilo.com/en/articles/2723855-how-to-add-an-unsubscribe-link-in-your-emails.md)
+- [High unsubscribe rate! What to do?](http://docs.metrilo.com/en/articles/944770-high-unsubscribe-rate-what-to-do.md)
+- [Countries with anti-spam legislation](http://docs.metrilo.com/en/articles/944752-countries-with-anti-spam-legislation.md)
+- [Email Automation with Metrilo](http://docs.metrilo.com/en/articles/799782-email-automation-with-metrilo.md)
+- [How to measure the effectiveness of automation campaigns](http://docs.metrilo.com/en/articles/964585-how-to-measure-the-effectiveness-of-automation-campaigns.md)
+- [How to set my first automated email marketing campaign](http://docs.metrilo.com/en/articles/964567-how-to-set-my-first-automated-email-marketing-campaign.md)
+- [Build an automated email campaign to reward your loyal high spenders with special promos](http://docs.metrilo.com/en/articles/678410-build-an-automated-email-campaign-to-reward-your-loyal-high-spenders-with-special-promos.md)
+- [After 1st order emails](http://docs.metrilo.com/en/articles/944859-after-1st-order-emails.md)
+- [Recover abandoned carts](http://docs.metrilo.com/en/articles/944838-recover-abandoned-carts.md)
+- [Fight browse abandonment](http://docs.metrilo.com/en/articles/4262231-fight-browse-abandonment.md)
+- [Content drip campaigns](http://docs.metrilo.com/en/articles/944827-content-drip-campaigns.md)
+- [Cross- and up-sell](http://docs.metrilo.com/en/articles/944842-cross-and-up-sell.md)
+- [Reengaging customers who are slipping away](http://docs.metrilo.com/en/articles/944850-reengaging-customers-who-are-slipping-away.md)
+- [Convert your leads with an automated email campaign](http://docs.metrilo.com/en/articles/725620-convert-your-leads-with-an-automated-email-campaign.md)
+- [How to build full HTML emails in Metrilo](http://docs.metrilo.com/en/articles/1192539-how-to-build-full-html-emails-in-metrilo.md)
+- [How to work with HTML emails in Metrilo](http://docs.metrilo.com/en/articles/1192606-how-to-work-with-html-emails-in-metrilo.md)
+- [How to upload a ZIP file to use in HTML emails](http://docs.metrilo.com/en/articles/1174987-how-to-upload-a-zip-file-to-use-in-html-emails.md)
+- [Dynamic block for abandoned products](http://docs.metrilo.com/en/articles/1482411-dynamic-block-for-abandoned-products.md)
+- [New email variables syntax](http://docs.metrilo.com/en/articles/1782989-new-email-variables-syntax.md)
+- [Variables in the email templates](http://docs.metrilo.com/en/articles/964592-variables-in-the-email-templates.md)
+- [Send targeted messages to your customers](http://docs.metrilo.com/en/articles/2805437-send-targeted-messages-to-your-customers.md)
+- [Revenue Breakdown and the email marketing feature](http://docs.metrilo.com/en/articles/2805192-revenue-breakdown-and-the-email-marketing-feature.md)
+- [Recover canceled orders](http://docs.metrilo.com/en/articles/731242-recover-canceled-orders.md)
+- [Interconnection of the customer database with email and sales recovery](http://docs.metrilo.com/en/articles/944401-interconnection-of-the-customer-database-with-email-and-sales-recovery.md)
+- [Send inviting emails at the right time when customers are ready to buy again](http://docs.metrilo.com/en/articles/936669-send-inviting-emails-at-the-right-time-when-customers-are-ready-to-buy-again.md)
+- [Reactivate holiday shoppers after the holidays](http://docs.metrilo.com/en/articles/725963-reactivate-holiday-shoppers-after-the-holidays.md): Customer retention, repeat orders, holiday marketing
+- [What is Customer Feedback Score](http://docs.metrilo.com/en/articles/1361632-what-is-customer-feedback-score.md)
+- [Customer feedback Dashboard](http://docs.metrilo.com/en/articles/1362143-customer-feedback-dashboard.md)
+- [How to send my first CF survey as a batch email](http://docs.metrilo.com/en/articles/1361942-how-to-send-my-first-cf-survey-as-a-batch-email.md)
+- [How to send my first transaction-based CF survey](http://docs.metrilo.com/en/articles/1362070-how-to-send-my-first-transaction-based-cf-survey.md)
+- [How to use CFS in HTML emails](http://docs.metrilo.com/en/articles/1526527-how-to-use-cfs-in-html-emails.md)
+- [How to handle customer feedback](http://docs.metrilo.com/en/articles/1362368-how-to-handle-customer-feedback.md)
+- [How to use the ready templates available by default in Metrilo?](http://docs.metrilo.com/en/articles/2731275-how-to-use-the-ready-templates-available-by-default-in-metrilo.md)
+- [The blocks available ready in the visual editor](http://docs.metrilo.com/en/articles/2731222-the-blocks-available-ready-in-the-visual-editor.md)
+- [How to use the Customer Feedback Score in the visual editor?](http://docs.metrilo.com/en/articles/2724392-how-to-use-the-customer-feedback-score-in-the-visual-editor.md)
+- [How to add and edit a CTA button?](http://docs.metrilo.com/en/articles/2731407-how-to-add-and-edit-a-cta-button.md)
+- [How to add a link to an image](http://docs.metrilo.com/en/articles/2724102-how-to-add-a-link-to-an-image.md)
+- [How to use variables?](http://docs.metrilo.com/en/articles/2724436-how-to-use-variables.md)
+- [How to use dynamic abandoned products?](http://docs.metrilo.com/en/articles/2724437-how-to-use-dynamic-abandoned-products.md)
+- [How to arrange my products in an email?](http://docs.metrilo.com/en/articles/2724175-how-to-arrange-my-products-in-an-email.md)
+- [Adding Stock Photos](http://docs.metrilo.com/en/articles/3675267-adding-stock-photos.md): Find free high-quality images for your campaigns from more than 500,000 stock photos.
+- [How to fix image size?](http://docs.metrilo.com/en/articles/2731293-how-to-fix-image-size.md)
+- [How to insert a logo?](http://docs.metrilo.com/en/articles/2724109-how-to-insert-a-logo.md)
+- [How to change the appearance of a divider?](http://docs.metrilo.com/en/articles/2724137-how-to-change-the-appearance-of-a-divider.md)
+
+## Advanced University
+
+- [How do I compare to others in my industry?](http://docs.metrilo.com/en/articles/3692865-how-do-i-compare-to-others-in-my-industry.md)
+- [Get immediate orders on new products by reaching out to the new collection lovers in your database.](http://docs.metrilo.com/en/articles/726119-get-immediate-orders-on-new-products-by-reaching-out-to-the-new-collection-lovers-in-your-database.md): Customer segmentation, customer insights, personalised marketing
+- [Compare monthly cohorts to see the effect of site overhaul or seasonility on new customer acquisition.](http://docs.metrilo.com/en/articles/722997-compare-monthly-cohorts-to-see-the-effect-of-site-overhaul-or-seasonility-on-new-customer-acquisition.md): Acquisition, cohort analysis, month-over-month
+- [Boost on-site conversions by putting the best-converting products forward.](http://docs.metrilo.com/en/articles/681565-boost-on-site-conversions-by-putting-the-best-converting-products-forward.md)
+- [Explore your loyal customers to learn how to get more like them](http://docs.metrilo.com/en/articles/723171-explore-your-loyal-customers-to-learn-how-to-get-more-like-them.md): Customer segmentation, customer loyalty, retention rate
+- [To get better profit and more repeat orders, here are a few ways to keep customers in the loop.](http://docs.metrilo.com/en/articles/681538-to-get-better-profit-and-more-repeat-orders-here-are-a-few-ways-to-keep-customers-in-the-loop.md)
+- [Improve your product offers and display based on product correlations](http://docs.metrilo.com/en/articles/681522-improve-your-product-offers-and-display-based-on-product-correlations.md): Product insights, product correlations, conversion rate
+- [A certain product gets a lot of views, but is being abandoned?](http://docs.metrilo.com/en/articles/681527-a-certain-product-gets-a-lot-of-views-but-is-being-abandoned.md): Product performance, conversion rate, site optimization
+- [Say hi to your newest customers with a personal email.](http://docs.metrilo.com/en/articles/678246-say-hi-to-your-newest-customers-with-a-personal-email.md): Welcome series, email automation, email performance
+- [What is Retention and what it means for eCommerce?](http://docs.metrilo.com/en/articles/504110-what-is-retention-and-what-it-means-for-ecommerce.md)
+- [Data-Driven eCommerce Resources](http://docs.metrilo.com/en/articles/504102-data-driven-ecommerce-resources.md)

@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/metrilo-tracking-openapi.yml
+note: >-
+  Entity-relationship graph derived from Metrilo's documented ingestion objects
+  (custom-integration docs + the generated OpenAPI). Identifiers: customer keyed
+  by email; category/product/order keyed by string id.
+entities:
+  - name: Customer
+    id: email
+    fields: [email, createdAt, firstName, lastName, phoneNumber, subscribed, tags]
+  - name: Category
+    id: id
+    fields: [id, name, url]
+  - name: Product
+    id: id
+    fields: [id, name, price, url, categories]
+  - name: Order
+    id: id
+    fields: [id, createdAt, email, amount, status, products]
+relationships:
+  - from: Product
+    to: Category
+    type: has_many
+    via: categories
+  - from: Order
+    to: Customer
+    type: belongs_to
+    via: email
+  - from: Order
+    to: Product
+    type: has_many
+    via: products[].productId
+  - from: Customer
+    to: Order
+    type: has_many
+    via: email

@@ -1,0 +1,20 @@
+{
+  "provider": "metrilo",
+  "sources": [
+    "metrilo-categories-api-openapi.yml",
+    "metrilo-customers-api-openapi.yml",
+    "metrilo-orders-api-openapi.yml",
+    "metrilo-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "metrilo-categories-api-openapi.yml",
+    "metrilo-customers-api-openapi.yml",
+    "metrilo-orders-api-openapi.yml",
+    "metrilo-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

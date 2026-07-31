@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Metrilo
+note: >-
+  Metrilo ships no language SDK. Its first-party client libraries are ecommerce
+  platform integration plugins (WooCommerce, Magento, OpenCart) plus a debug
+  Chrome extension. All are published in the Metrilo GitHub organization.
+packages:
+  - language: php
+    platform: WooCommerce (WordPress)
+    registry: github
+    name: metrilo-woocommerce-integration
+    url: https://github.com/Metrilo/metrilo-woocommerce-integration
+    official: true
+  - language: php
+    platform: Magento 2
+    registry: github
+    name: metrilo-magento2-integration
+    url: https://github.com/Metrilo/metrilo-magento2-integration
+    official: true
+  - language: php
+    platform: Magento 1
+    registry: github
+    name: metrilo-magento1-integration
+    url: https://github.com/Metrilo/metrilo-magento1-integration
+    official: true
+  - language: php
+    platform: OpenCart
+    registry: github
+    name: OpenCart-Plugin
+    url: https://github.com/Metrilo/OpenCart-Plugin
+    official: true
+  - language: javascript
+    platform: Chrome extension (debugging)
+    registry: github
+    name: metrilo-chrome-extension
+    url: https://github.com/Metrilo/metrilo-chrome-extension
+    official: true
+    note: Debug extension for inspecting Metrilo events; not a runtime SDK.

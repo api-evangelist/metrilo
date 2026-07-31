@@ -1,0 +1,368 @@
+openapi: 3.1.0
+x-provenance:
+  generated: '2026-07-20'
+  method: generated
+  source: https://github.com/Metrilo/custom-integration
+  note: >-
+    Faithfully generated from Metrilo's public custom-integration API
+    documentation (endpoints, request envelope, object fields, X-Digest auth,
+    and HTTP status codes are all documented there). Metrilo publishes no
+    OpenAPI of its own; this is an API Evangelist rendering of the documented
+    backend tracking API. Field types reflect documented behavior only.
+info:
+  title: Metrilo Tracking & CRM API
+  version: v2
+  description: >-
+    Metrilo's server-side ingestion API for ecommerce analytics, CRM, and email
+    marketing. Push customers, categories, products, and orders (single or
+    batch) into a Metrilo project. All requests are POST with a JSON envelope of
+    `{ time, token, params }`. Every backend endpoint except `/customer`
+    requires an `X-Digest` header containing an HMAC-SHA256 of the raw request
+    body keyed with the project's API Secret.
+  contact:
+    name: Metrilo
+    url: https://github.com/Metrilo/custom-integration
+  x-brevo: Metrilo is part of Brevo (acquired 2021).
+servers:
+  - url: https://trk.mtrl.me/v2
+    description: Metrilo tracking ingestion (production)
+tags:
+  - name: Customers
+  - name: Categories
+  - name: Products
+  - name: Orders
+paths:
+  /customer:
+    post:
+      tags: [Customers]
+      operationId: createCustomer
+      summary: Create or update a single customer
+      description: >-
+        Create or update one customer, identified by email. This is the only
+        backend endpoint that does NOT require the X-Digest header.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '402': { $ref: '#/components/responses/PaymentRequired' }
+        '500': { $ref: '#/components/responses/ServerError' }
+        '502': { $ref: '#/components/responses/BadGateway' }
+  /customer/batch:
+    post:
+      tags: [Customers]
+      operationId: batchCustomers
+      summary: Bulk import customers
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBatchEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '500': { $ref: '#/components/responses/ServerError' }
+        '502': { $ref: '#/components/responses/BadGateway' }
+  /customer/tag:
+    post:
+      tags: [Customers]
+      operationId: tagCustomer
+      summary: Add tags to a customer
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerTagEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /customer/untag:
+    post:
+      tags: [Customers]
+      operationId: untagCustomer
+      summary: Remove tags from a customer
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerTagEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /category:
+    post:
+      tags: [Categories]
+      operationId: createCategory
+      summary: Create or update a single category
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /category/batch:
+    post:
+      tags: [Categories]
+      operationId: batchCategories
+      summary: Bulk import categories
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryBatchEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /product:
+    post:
+      tags: [Products]
+      operationId: createProduct
+      summary: Create or update a single product
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /product/batch:
+    post:
+      tags: [Products]
+      operationId: batchProducts
+      summary: Bulk import products
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductBatchEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /order:
+    post:
+      tags: [Orders]
+      operationId: createOrder
+      summary: Create or update a single order
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /order/batch:
+    post:
+      tags: [Orders]
+      operationId: batchOrders
+      summary: Bulk import orders
+      security: [{ xDigest: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderBatchEnvelope'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+components:
+  securitySchemes:
+    xDigest:
+      type: apiKey
+      in: header
+      name: X-Digest
+      description: >-
+        HMAC-SHA256 digest of the raw JSON request body, keyed with the
+        project's API Secret. Required for every backend endpoint except
+        POST /customer.
+  responses:
+    Ok:
+      description: Request accepted for processing.
+    BadRequest:
+      description: Bad request (malformed payload).
+    Unauthorized:
+      description: Invalid API token, or the X-Digest header is missing.
+    PaymentRequired:
+      description: Payment required for the project.
+    Forbidden:
+      description: IP is on the ignore list, or the X-Digest signature is invalid.
+    ServerError:
+      description: Server error while processing the request.
+    BadGateway:
+      description: Server error while accepting the request.
+  schemas:
+    Envelope:
+      type: object
+      required: [token, params]
+      properties:
+        time:
+          type: integer
+          format: int64
+          description: Client event time in epoch milliseconds.
+        token:
+          type: string
+          description: Project API Token (Settings -> Installation).
+        params:
+          type: object
+    Customer:
+      type: object
+      required: [email]
+      properties:
+        email: { type: string, format: email }
+        createdAt: { type: integer, format: int64, description: Epoch ms }
+        firstName: { type: string }
+        lastName: { type: string }
+        phoneNumber: { type: string }
+        subscribed: { type: boolean }
+        tags:
+          type: array
+          items: { type: string }
+          description: Merged with existing tags, not overwritten.
+    Category:
+      type: object
+      required: [id]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        url: { type: string, format: uri }
+    Product:
+      type: object
+      required: [id]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        price: { type: number }
+        url: { type: string, format: uri }
+        categories:
+          type: array
+          items: { type: string }
+          description: Array of category IDs.
+    OrderLine:
+      type: object
+      properties:
+        productId: { type: string }
+        quantity: { type: integer }
+    Order:
+      type: object
+      required: [id]
+      properties:
+        id: { type: string }
+        createdAt: { type: integer, format: int64, description: Epoch ms }
+        email: { type: string, format: email }
+        amount: { type: number }
+        status: { type: string, description: 'e.g. completed' }
+        products:
+          type: array
+          items: { $ref: '#/components/schemas/OrderLine' }
+    CustomerEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params: { $ref: '#/components/schemas/Customer' }
+    CustomerBatchEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params:
+              type: array
+              items: { $ref: '#/components/schemas/Customer' }
+    CustomerTagEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              required: [email, tags]
+              properties:
+                email: { type: string, format: email }
+                tags:
+                  type: array
+                  items: { type: string }
+    CategoryEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params: { $ref: '#/components/schemas/Category' }
+    CategoryBatchEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params:
+              type: array
+              items: { $ref: '#/components/schemas/Category' }
+    ProductEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params: { $ref: '#/components/schemas/Product' }
+    ProductBatchEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params:
+              type: array
+              items: { $ref: '#/components/schemas/Product' }
+    OrderEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params: { $ref: '#/components/schemas/Order' }
+    OrderBatchEnvelope:
+      allOf:
+        - $ref: '#/components/schemas/Envelope'
+        - type: object
+          properties:
+            params:
+              type: array
+              items: { $ref: '#/components/schemas/Order' }

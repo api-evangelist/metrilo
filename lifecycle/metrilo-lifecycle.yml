@@ -1,0 +1,18 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Metrilo/custom-integration
+versioning:
+  scheme: uri-path
+  current: v2
+  base: https://trk.mtrl.me/v2
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy or RFC 8594 Sunset/Deprecation header support.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+note: >-
+  Metrilo (now part of Brevo) versions its tracking API via the /v2 path prefix.
+  No public status page, SLA, or deprecation policy was found.

@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/metrilo-tracking-openapi.yml
+skills:
+  - file: metrilo-import-catalog-and-orders.md
+    name: Import a store catalog and order history into Metrilo
+    api: openapi/metrilo-tracking-openapi.yml
+    operations: [batchCustomers, batchCategories, batchProducts, batchOrders]
+  - file: metrilo-sync-and-tag-customer.md
+    name: Sync a customer and apply CRM tags
+    api: openapi/metrilo-tracking-openapi.yml
+    operations: [createCustomer, tagCustomer, untagCustomer]

@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Metrilo Tracking & CRM API
+  version: 1.0.0
+extends: openapi/metrilo-tracking-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-artifact-source: https://github.com/Metrilo/custom-integration
+      x-authentication: authentication/metrilo-authentication.yml
+      x-conventions: conventions/metrilo-conventions.yml
+      x-errors: errors/metrilo-problem-types.yml
+      x-data-model: data-model/metrilo-data-model.yml
+  - target: $.info
+    update:
+      x-import-order:
+        - /customer/batch
+        - /category/batch
+        - /product/batch
+        - /order/batch
+      x-max-request-size: 5MB
+      x-processing: asynchronous (~1 minute)

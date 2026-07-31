@@ -1,0 +1,62 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Metrilo/custom-integration
+authentication:
+  style: api-key + HMAC request signing
+  token: request body field `token`
+  signing:
+    header: X-Digest
+    algorithm: HMAC-SHA256
+    message: raw JSON request body
+    key: API Secret
+    scope: all backend endpoints except POST /customer
+  ref: authentication/metrilo-authentication.yml
+request_envelope:
+  transport: HTTPS POST, application/json
+  shape:
+    time: epoch milliseconds (client event time)
+    token: project API Token
+    params: resource object, or array of objects for /batch endpoints
+  max_request_size: 5MB
+idempotency:
+  supported: false
+  note: >-
+    Metrilo documents no idempotency-key mechanism. Writes are upserts keyed on
+    the resource id (customer email; category/product/order id), so re-sending
+    the same object updates in place rather than duplicating, but there is no
+    dedicated idempotency contract.
+batching:
+  batch_endpoints: [/customer/batch, /category/batch, /product/batch, /order/batch]
+  import_order:
+    - customers (/customer/batch)
+    - categories (/category/batch)
+    - deleted products (/product/batch, if needed)
+    - products (/product/batch)
+    - orders (/order/batch, optional)
+  note: Import order is significant; products reference categories, orders reference products and customers.
+identity:
+  anonymous_session: cbuid cookie (front-end tracking)
+  resolution: window.metrilo.identify(email) links an anonymous session to a customer
+data_semantics:
+  update_behavior: most fields are replaced on update; customer `tags` and product options are merged.
+  caching_warning: do not cache customer-action calls (breaks attribution).
+processing:
+  model: asynchronous ingestion
+  latency: ~1 minute before events surface in reports
+pagination:
+  supported: false
+  note: Ingestion-only API; there is no documented read/query surface to paginate.
+versioning:
+  scheme: uri-path
+  current: v2
+  base: https://trk.mtrl.me/v2
+error_envelope:
+  style: HTTP status codes (no structured problem body documented)
+  ref: errors/metrilo-problem-types.yml
+rate_limits:
+  documented: false
+cross_links:
+  authentication: authentication/metrilo-authentication.yml
+  errors: errors/metrilo-problem-types.yml
+  lifecycle: lifecycle/metrilo-lifecycle.yml
+  data_model: data-model/metrilo-data-model.yml

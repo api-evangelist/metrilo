@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Metrilo/custom-integration
+format: http-status
+note: >-
+  Metrilo's tracking API signals outcomes with HTTP status codes; no structured
+  RFC 9457 problem body is documented. Titles and remediation below are taken
+  from the custom-integration documentation.
+envelope_field: null
+problems:
+  - status: 200
+    title: Accepted
+    meaning: Request accepted for asynchronous processing.
+  - status: 400
+    title: Bad request
+    meaning: Malformed payload.
+    remediation: Validate the JSON envelope (time/token/params) and required object fields.
+  - status: 401
+    title: Unauthorized
+    meaning: Invalid API token, or the X-Digest header is missing on an endpoint that requires it.
+    remediation: Verify the project token and include the X-Digest header on all backend endpoints except POST /customer.
+  - status: 402
+    title: Payment required
+    meaning: The Metrilo project requires payment / an active plan.
+    remediation: Check the project's billing status.
+  - status: 403
+    title: Forbidden
+    meaning: The caller IP is on the ignore list, or the X-Digest signature is invalid.
+    remediation: Recompute HMAC-SHA256 over the exact raw body with the API Secret; check IP ignore settings.
+  - status: 500
+    title: Server error (processing)
+    meaning: Server error while processing the request.
+    remediation: Retry with backoff.
+  - status: 502
+    title: Bad gateway (accepting)
+    meaning: Server error while accepting the request.
+    remediation: Retry with backoff.
