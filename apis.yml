@@ -93,6 +93,8 @@ apis:
   - type: Documentation
     url: https://github.com/Metrilo/custom-integration
 common:
+- type: Overlay
+  url: overlays/metrilo-tracking-overlay.yaml
 - type: DomainSecurity
   url: security/metrilo-domain-security.yml
 - type: DeveloperPortal
