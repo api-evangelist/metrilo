@@ -1,0 +1,93 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Metrilo-published Tracking API spec
+  version: 1.0.0
+extends: openapi/metrilo-tracking-api-openapi.yml
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: openapi/metrilo-tracking-api-openapi.yml
+  note: >-
+    openapi/metrilo-tracking-api-openapi.yml is Metrilo's OWN published
+    specification, saved verbatim from
+    https://github.com/Metrilo/custom-integration/blob/master/metrilo_open_api_specification.yml
+    and never edited. Everything API Evangelist adds — including the two
+    corrections below, both of which are contradicted by Metrilo's own
+    developer guide — lives here as Overlay actions.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 4
+      x-artifact-source: https://github.com/Metrilo/custom-integration
+      x-spec-source: https://github.com/Metrilo/custom-integration/blob/master/metrilo_open_api_specification.yml
+      x-authentication: authentication/metrilo-authentication.yml
+      x-conventions: conventions/metrilo-conventions.yml
+      x-errors: errors/metrilo-problem-types.yml
+      x-data-model: data-model/metrilo-data-model.yml
+      x-rate-limits: rate-limits/metrilo-rate-limits.yml
+      x-sandbox: sandbox/metrilo-sandbox.yml
+      x-tool-crosswalk: mcp/metrilo-tool-crosswalk.yml
+      x-brevo: Metrilo is part of Brevo (formerly Sendinblue), acquired 2021.
+
+  # CORRECTION 1 — the spec's servers[] omits the /v2 path prefix that every
+  # published curl example, the docs, and apis.yml baseURL actually use.
+  - target: $.servers
+    update:
+      - url: https://trk.mtrl.me/v2
+        description: >-
+          Metrilo tracking ingestion (production). The published spec declares
+          https://trk.mtrl.me with no path; the developer guide's own examples
+          POST to https://trk.mtrl.me/v2/customer, /v2/category, /v2/order etc.
+          The /v2 prefix is required.
+      - url: https://trk.mtrl.me
+        description: As declared in the provider specification (servers[0]) — missing the /v2 version prefix.
+
+  # CORRECTION 2 — the spec declares NO securitySchemes, yet every call is
+  # authenticated by a body token and (except POST /customer) an HMAC header.
+  - target: $.components
+    update:
+      securitySchemes:
+        xDigest:
+          type: apiKey
+          in: header
+          name: X-Digest
+          description: >-
+            HMAC-SHA256 digest of the raw request body string, keyed with the
+            project API Secret. Required on every backend endpoint EXCEPT
+            POST /customer. Not declared in the provider specification.
+          x-algorithm: HMAC-SHA256
+          x-message: raw JSON request body
+          x-key: API Secret (Settings -> Installation)
+        projectToken:
+          type: apiKey
+          in: query
+          name: token
+          description: >-
+            The project API Token. NOTE: this is transmitted as a FIELD OF THE
+            JSON REQUEST BODY (`{"token": "..."}`), which OpenAPI 3.0 has no
+            securityScheme location for. Modelled as apiKey/query only so it is
+            expressible; see authentication/metrilo-authentication.yml for the
+            accurate description.
+          x-actual-location: request body field `token`
+
+  - target: $.info
+    update:
+      x-max-request-size: 5MB
+      x-processing: asynchronous (~1 minute before events surface in reports)
+      x-import-order:
+        - /customer/batch
+        - /category/batch
+        - /product/batch
+        - /order/batch
+      x-idempotency: >-
+        No idempotency key. Writes upsert on the resource identity (customer
+        email; category/product/order id), so a retry updates in place rather
+        than duplicating — but there is no idempotency contract.
+      x-rate-limit-policy: >-
+        None published. No 429 is declared and no RateLimit/Retry-After header
+        is documented; only 500 (processing) and 502 (accepting) signal server
+        load. See rate-limits/metrilo-rate-limits.yml.
+      x-content-type-caveat: >-
+        The spec models request bodies under `text/plain`, matching the guide's
+        curl examples (-H "Content-Type: text/plain"), even though the payload
+        is JSON. Send text/plain to match documented behaviour.

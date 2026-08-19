@@ -6,9 +6,22 @@ x-provenance:
   note: >-
     Faithfully generated from Metrilo's public custom-integration API
     documentation (endpoints, request envelope, object fields, X-Digest auth,
-    and HTTP status codes are all documented there). Metrilo publishes no
-    OpenAPI of its own; this is an API Evangelist rendering of the documented
-    backend tracking API. Field types reflect documented behavior only.
+    and HTTP status codes are all documented there). This is an API Evangelist
+    rendering of the documented backend tracking API; field types reflect
+    documented behavior only.
+  superseded_note: >-
+    CORRECTION 2026-08-13 — this file previously claimed "Metrilo publishes no
+    OpenAPI of its own". That was wrong. Metrilo DOES publish an OpenAPI 3.0.1
+    (v2.1.1) on its own SwaggerHub org and mirrors it in the custom-integration
+    repo; it is saved verbatim at
+    openapi/_original/metrilo-tracking-api-openapi.yml (and
+    openapi/metrilo-tracking-api-openapi.yml). THE PROVIDER SPEC IS
+    AUTHORITATIVE. This generated document is retained because it is the source
+    of the four refined per-resource specs and because it is richer in three
+    places the provider spec is silent: it declares securitySchemes, it carries
+    the correct /v2 base URL, and it uses readable operationIds (createCustomer
+    vs customerOperation). mcp/metrilo-tool-crosswalk.yml maps the two id
+    vocabularies onto each other.
 info:
   title: Metrilo Tracking & CRM API
   version: v2

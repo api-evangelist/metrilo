@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Metrilo Tracking & CRM Categories Customers API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update a single customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/customer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update one customer, identified by email. This is the only backend endpoint that does NOT require the X-Digest header."
+        },
+        {
+          "info": {
+            "name": "Bulk import customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/customer/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk import customers"
+        },
+        {
+          "info": {
+            "name": "Add tags to a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/customer/tag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add tags to a customer"
+        },
+        {
+          "info": {
+            "name": "Remove tags from a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/customer/untag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove tags from a customer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

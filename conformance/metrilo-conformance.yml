@@ -1,10 +1,15 @@
-generated: '2026-07-20'
+generated: '2026-08-13'
 method: searched
 source: https://docs.metrilo.com/en/articles/1613060-metrilo-and-gdpr
 note: >-
   Standards conformance derived from Metrilo's documented behavior plus its
   published GDPR posture (GDPR compliance page, data encryption, named Data
-  Protection Officer, Data Processing Agreement on request).
+  Protection Officer, Data Processing Agreement on request). CORRECTED
+  2026-08-13: the previous round recorded `openapi: conforms: false` on the
+  basis that "Metrilo publishes no OpenAPI". That was wrong. Metrilo publishes
+  an OpenAPI 3.0.1 document in two places — its own SwaggerHub org
+  (app.swaggerhub.com/apis/metrilo/api, 4 dated revisions) and a byte-identical
+  copy at metrilo_open_api_specification.yml in the custom-integration repo.
 standards:
   - id: gdpr
     conforms: true
@@ -20,8 +25,42 @@ standards:
     conforms: false
     evidence: Errors are bare HTTP status codes; no application/problem+json documented.
   - id: openapi
+    conforms: true
+    version: 3.0.1
+    evidence: >-
+      Metrilo publishes its own OpenAPI 3.0.1 specification, "Metrilo tracking
+      API" v2.1.1, 10 operations, 19 schemas, contact support@metrilo.com,
+      servers https://trk.mtrl.me. Hosted on Metrilo's SwaggerHub org and
+      mirrored byte-identically in the custom-integration repo. Saved verbatim
+      to openapi/metrilo-tracking-api-openapi.yml.
+    docs: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
+    caveats:
+      - The specification declares NO securitySchemes even though every call requires an API token and (except POST /customer) an HMAC X-Digest header. The header parameter was declared in 2.0.0/2.0.1 and removed in 2.1.1.
+      - servers[] omits the required /v2 path prefix.
+      - Operations carry descriptions and operationIds but no summaries, and there are no request/response examples.
+  - id: rfc9116-security-txt
     conforms: false
-    evidence: Metrilo publishes no OpenAPI (API Evangelist maintains a generated one).
+    evidence: >-
+      No first-party security.txt on any Metrilo host. docs.metrilo.com serves
+      one, but it is Intercom's (Canonical app.intercom.com). See
+      well-known/metrilo-well-known.yml.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header support and no deprecation policy; see lifecycle/metrilo-lifecycle.yml.
+  - id: asyncapi
+    conforms: false
+    applicable: false
+    evidence: >-
+      Metrilo has no event, streaming or webhook surface at all — the API is
+      one-way ingestion only, and the docs, the GitHub org and the spec contain
+      no callback, webhook or subscription concept. Not a gap: there is nothing
+      to describe.
+  - id: a2a-agent-card
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json probed on all
+      four hosts on 2026-08-13. No agent card. The 200s from www.metrilo.com are
+      an SPA catch-all returning marketing HTML.
 compliance_program:
   gdpr:
     published: true

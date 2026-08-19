@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Metrilo Tracking & CRM Categories Products API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update a single product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/product",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a single product"
+        },
+        {
+          "info": {
+            "name": "Bulk import products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/product/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk import products"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

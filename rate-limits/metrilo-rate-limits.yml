@@ -1,0 +1,53 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/Metrilo/custom-integration
+docs: https://github.com/Metrilo/custom-integration#backend-integration
+limit_count: 0
+note: >-
+  Metrilo publishes NO request-rate limit for the tracking/ingestion API — no
+  requests-per-second, no per-key or per-project quota, and no documented
+  429 behaviour. The developer guide, the provider's own OpenAPI
+  (metrilo_open_api_specification.yml, 10 operations) and the help center were
+  all checked. What Metrilo DOES publish is a per-request PAYLOAD ceiling and a
+  set of throughput-shaping conventions, recorded below. Because there is no
+  published limit and no rate-limit response header, an agent has no runtime
+  signal to back off on: it can only observe 5xx and retry.
+limits: []
+payload_limits:
+  - scope: per-request
+    kind: request-body-size
+    limit: 5MB
+    applies_to: all endpoints at https://trk.mtrl.me/v2
+    evidence: >-
+      "Note that each request you send to Metrilo is limited to 5MB in size."
+      (custom-integration guide)
+    remediation: Page large catalogs/imports into multiple /batch calls under 5MB each.
+response_headers:
+  documented: false
+  x_ratelimit: null
+  ratelimit_standard: null
+  retry_after: null
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header is documented, and the
+    provider OpenAPI declares no 429 response — only 200/400/401/402/403/500/502.
+exhaustion:
+  status_code: null
+  documented: false
+  note: >-
+    No 429 Too Many Requests is documented anywhere. The only server-side
+    failure codes published are 500 (error while PROCESSING the request) and
+    502 (error while ACCEPTING the request); 502 is the closest thing to a
+    back-pressure signal Metrilo exposes.
+backoff_guidance:
+  published: false
+  derived: >-
+    Retry 500 and 502 with exponential backoff. Ingestion is asynchronous
+    (~1 minute to surface in reports), so a 200 is an accept, not a commit —
+    do not treat a retry as duplication (writes upsert on email / resource id).
+cross_links:
+  conventions: conventions/metrilo-conventions.yml
+  errors: errors/metrilo-problem-types.yml
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://raw.githubusercontent.com/Metrilo/custom-integration/master/README.md
+  http_status: 200

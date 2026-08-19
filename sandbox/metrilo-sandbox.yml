@@ -1,0 +1,68 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/Metrilo/custom-integration
+sandbox_environment: false
+test_mode: false
+note: >-
+  Metrilo ships NO sandbox environment and NO test mode. There is one set of
+  credentials (API Token + API Secret) and one ingestion host
+  (https://trk.mtrl.me/v2); there are no test-vs-live key prefixes, no test
+  fixtures, no simulated identifiers and no dedicated test project type. What
+  the developer guide publishes instead is a manual, human-mediated test
+  workflow, captured below. This is recorded as an honest absence — no Sandbox
+  pointer is emitted in apis.yml, because a support-ticket data reset is not a
+  developer-callable sandbox.
+key_separation:
+  test_live_prefixes: false
+  modes: []
+  note: One project-scoped API Token + API Secret from Settings -> Installation. No mode flag.
+test_values:
+  published: false
+  note: >-
+    The guide's worked examples use obviously-fake placeholder credentials
+    ("sh0p-t0k3n" / "m3trilo-secr3t") purely to make the HMAC-SHA256 X-Digest
+    walkthrough reproducible. They are documentation placeholders, NOT
+    provider-issued test credentials, and they authenticate nothing.
+documented_test_workflow:
+  - step: Test against a non-production store first
+    detail: >-
+      "We strongly recommend doing this on a Staging/Beta environment first to
+      make sure the integration is smooth and nothing breaks down." The staging
+      environment is the MERCHANT'S — Metrilo provides no staging of its own.
+  - step: Sign up and read credentials
+    detail: Create an account at https://app.metrilo.com/signup, then Settings -> Installation for the API Token and API Secret.
+  - step: Run the quickstart against the live ingestion host
+    detail: Test data is written to the real project at https://trk.mtrl.me/v2 — there is nowhere else to send it.
+  - step: Request a project reset when finished
+    detail: >-
+      "after you're done testing, you can just ping us and we'll reset your
+      project to a pristine state." The reset is a support request, not an API
+      call or a self-serve control.
+free_access:
+  trial_days: 14
+  credit_card_required: false
+  note: >-
+    The 14-day all-features free trial is the closest thing to no-risk
+    evaluation, but it is a full production project, not a sandbox.
+    See plans/metrilo-plans-pricing.yml.
+verification_tooling:
+  - name: Metrilo Chrome extension
+    kind: debug
+    url: https://github.com/Metrilo/metrilo-chrome-extension
+    purpose: Inspect Metrilo events fired by the client-side tracking library in the browser.
+    note: Last updated 2016 — see packages/metrilo-packages.yml for currency.
+  - name: Integration verification guide
+    kind: docs
+    url: https://docs.metrilo.com/en/articles/915291-how-to-be-sure-if-the-integration-went-well
+    purpose: Manual checklist for confirming events are landing.
+latency_caveat: >-
+  Ingestion is asynchronous; allow ~1 minute before test data appears in
+  reports. A 200 is an accept, not a commit.
+cross_links:
+  authentication: authentication/metrilo-authentication.yml
+  conventions: conventions/metrilo-conventions.yml
+  plans: plans/metrilo-plans-pricing.yml
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://raw.githubusercontent.com/Metrilo/custom-integration/master/README.md
+  http_status: 200

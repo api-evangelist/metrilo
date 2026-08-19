@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Metrilo Tracking & CRM Categories API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update a single category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/category",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a single category"
+        },
+        {
+          "info": {
+            "name": "Bulk import categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/category/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk import categories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

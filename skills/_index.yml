@@ -1,6 +1,13 @@
-generated: '2026-07-20'
+generated: '2026-08-13'
 method: generated
 source: openapi/metrilo-tracking-openapi.yml
+authoritative_spec: openapi/metrilo-tracking-api-openapi.yml
+operation_id_note: >-
+  The skills below are grounded in the API Evangelist operationIds
+  (createCustomer, batchOrders, ...). Metrilo's OWN published specification uses
+  a different vocabulary for the same ten operations (customerOperation,
+  orderBatchOperation, ...). Both are real; mcp/metrilo-tool-crosswalk.yml maps
+  them one-to-one. Paths and payloads are identical either way.
 skills:
   - file: metrilo-import-catalog-and-orders.md
     name: Import a store catalog and order history into Metrilo

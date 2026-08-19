@@ -1,15 +1,86 @@
-generated: '2026-07-20'
+generated: '2026-08-13'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+note: >-
+  Baseline written by 0-working/probe-domain-security.py (which resolves the
+  apis.yml baseURL host), then extended by hand with the same kind of live
+  probe against the website, app and docs hosts and both registrable domains.
+  Every value below was observed on 2026-08-13.
 hosts:
 - host: trk.mtrl.me
+  role: api ingestion
   https: true
   tls_version: TLSv1.3
-  cert_expires: Sep  8 22:55:37 2026 GMT
-  hsts: null
+  cert_valid: true
+  cert_expires: Nov  7 00:58:21 2026 GMT
+  hsts: true
+  hsts_max_age: 15724800
+  hsts_include_subdomains: true
+  note: >-
+    HSTS is served on the API host but max-age is 15724800s (182 days) — under
+    the 31536000s (1 year) required for HSTS preload eligibility.
+    An unauthenticated POST to /v2/customer returns 401 (endpoint live);
+    GET returns 405. Fronted by Cloudflare.
+- host: www.metrilo.com
+  role: website
+  https: true
+  tls_version: TLSv1.3
+  cert_valid: true
+  hsts: false
+  note: >-
+    No HSTS on the marketing site. Also answers HTTP 200 with the same
+    marketing HTML to arbitrary paths including every /.well-known/* probe —
+    see well-known/metrilo-well-known.yml.
+- host: app.metrilo.com
+  role: application / login
+  https: true
+  tls_version: TLSv1.3
+  cert_valid: true
+  hsts: true
+  hsts_max_age: 15724800
+  hsts_include_subdomains: true
+- host: docs.metrilo.com
+  role: documentation (Intercom-hosted help center)
+  https: true
+  tls_version: TLSv1.3
+  cert_valid: true
+  hsts: false
+  third_party: Intercom
 domains:
 - domain: mtrl.me
+  role: api
   dnssec: false
   caa: []
   spf: true
+  spf_record: 'v=spf1 include:mailgun.org ~all'
   dmarc: false
+  dmarc_policy: null
+  misconfiguration: >-
+    A TXT record EXISTS at _dmarc.mtrl.me but its value is an SPF policy
+    ("v=spf1 include:mailgun.org ~all"), not a DMARC policy. Because it does not
+    begin with "v=DMARC1", it provides no DMARC protection at all — the domain
+    is unprotected while appearing to have a record. This is a copy-paste
+    misconfiguration, not an absence.
+- domain: metrilo.com
+  role: website / mail
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: 'v=spf1 a mx include:spf.mail.intercom.io include:mailgun.org include:_spf.google.com ~all'
+  dmarc: true
+  dmarc_policy: none
+  dmarc_record: 'v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com'
+  note: >-
+    DMARC is present but set to p=none (monitor only — no quarantine or
+    reject). Aggregate reports are routed to rua@dmarc.brevo.com, independent
+    DNS-level confirmation that Metrilo mail is administered by Brevo, the
+    2021 acquirer.
+summary:
+  hosts_probed: 4
+  https_everywhere: true
+  hsts_hosts: 2
+  hsts_preload_eligible: 0
+  dnssec_domains: 0
+  caa_domains: 0
+  dmarc_enforcing_domains: 0
+checked: '2026-08-13'

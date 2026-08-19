@@ -1,0 +1,527 @@
+{
+  "item": [
+    {
+      "id": "24f8fca9-b1fa-4636-b435-63bbc780b0d3",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7c21aa69-9724-4c3d-acc2-b6d586df11d6",
+          "name": "Create or update a single order",
+          "request": {
+            "name": "Create or update a single order",
+            "description": {},
+            "url": {
+              "path": [
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Digest"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"params\": \"<object>\",\n  \"time\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2093edf3-123d-44ac-9f33-a132d45fcece",
+              "name": "Request accepted for processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"string\",\n  \"params\": {\n    \"id\": \"string\",\n    \"createdAt\": 2455,\n    \"email\": \"1oeZ@cxjFGtbh.vj\",\n    \"amount\": 8732.277876371596,\n    \"status\": \"string\",\n    \"products\": [\n      {\n        \"productId\": \"string\",\n        \"quantity\": 7868\n      },\n      {\n        \"productId\": \"string\",\n        \"quantity\": 5552\n      }\n    ]\n  },\n  \"time\": 5097\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13399dda-e71d-453a-9f10-20b28d26fae4",
+              "name": "Bad request (malformed payload).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"string\",\n  \"params\": {\n    \"id\": \"string\",\n    \"createdAt\": 2455,\n    \"email\": \"1oeZ@cxjFGtbh.vj\",\n    \"amount\": 8732.277876371596,\n    \"status\": \"string\",\n    \"products\": [\n      {\n        \"productId\": \"string\",\n        \"quantity\": 7868\n      },\n      {\n        \"productId\": \"string\",\n        \"quantity\": 5552\n      }\n    ]\n  },\n  \"time\": 5097\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a3bec4b-fc27-4461-93e9-5129850e1c03",
+              "name": "Invalid API token, or the X-Digest header is missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"string\",\n  \"params\": {\n    \"id\": \"string\",\n    \"createdAt\": 2455,\n    \"email\": \"1oeZ@cxjFGtbh.vj\",\n    \"amount\": 8732.277876371596,\n    \"status\": \"string\",\n    \"products\": [\n      {\n        \"productId\": \"string\",\n        \"quantity\": 7868\n      },\n      {\n        \"productId\": \"string\",\n        \"quantity\": 5552\n      }\n    ]\n  },\n  \"time\": 5097\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9766403-4dda-4610-a4f6-2f62106de677",
+              "name": "IP is on the ignore list, or the X-Digest signature is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"string\",\n  \"params\": {\n    \"id\": \"string\",\n    \"createdAt\": 2455,\n    \"email\": \"1oeZ@cxjFGtbh.vj\",\n    \"amount\": 8732.277876371596,\n    \"status\": \"string\",\n    \"products\": [\n      {\n        \"productId\": \"string\",\n        \"quantity\": 7868\n      },\n      {\n        \"productId\": \"string\",\n        \"quantity\": 5552\n      }\n    ]\n  },\n  \"time\": 5097\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "603aa473-895c-49bc-b747-c6d9ed2cd235",
+          "name": "Bulk import orders",
+          "request": {
+            "name": "Bulk import orders",
+            "description": {},
+            "url": {
+              "path": [
+                "order",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Digest"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3b0b0aed-8594-4548-b606-8145b3a81ded",
+              "name": "Request accepted for processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fe9366d-33ac-4ee4-a5f9-1d05c7f102f2",
+              "name": "Bad request (malformed payload).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "045e4f16-e09e-400a-b114-f356fea3748e",
+              "name": "Invalid API token, or the X-Digest header is missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12f918fa-31bb-449c-a851-ae461b2fe0b1",
+              "name": "IP is on the ignore list, or the X-Digest signature is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "order",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Digest",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://trk.mtrl.me/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "24aa39f1-60f4-407b-b91a-9f56bc35cc6b",
+    "name": "Metrilo Tracking & CRM Categories Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Metrilo's server-side ingestion API for ecommerce analytics, CRM, and email marketing. Push customers, categories, products, and orders (single or batch) into a Metrilo project. All requests are POST with a JSON envelope of `{ time, token, params }`. Every backend endpoint except `/customer` requires an `X-Digest` header containing an HMAC-SHA256 of the raw request body keyed with the project's API Secret.\n\nContact Support:\n Name: Metrilo",
+      "type": "text/plain"
+    }
+  }
+}

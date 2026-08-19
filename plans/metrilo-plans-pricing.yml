@@ -1,0 +1,87 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.metrilo.com/pricing
+docs: https://docs.metrilo.com/en/articles/915515-metrilo-plans-pricing
+currency: USD
+billing_periods: [monthly, annual]
+trial:
+  available: true
+  length_days: 14
+  credit_card_required: false
+  scope: all features
+  note: '"Try all features free for 14 days, then pick your plan."'
+refund_policy:
+  window_days: 30
+  terms: 100% refund within 30 days of subscription.
+plan_count: 3
+plans:
+  - name: Essential
+    price_monthly: 199
+    price_monthly_billed_annually: 165
+    price_annual_total: 1990
+    currency: USD
+    annual_saving: 398
+    quota: null
+    overage: null
+    included:
+      - Growth Assistant (data-driven improvement suggestions)
+      - 'Ecommerce Analytics: real-time dashboard'
+      - Marketing performance reporting
+      - Revenue breakdowns
+      - Product performance reports
+      - Conversion funnels
+  - name: Pro
+    price_monthly: 379
+    price_monthly_billed_annually: 315
+    price_annual_total: 3790
+    currency: USD
+    annual_saving: 758
+    includes_previous: Essential
+    quota: null
+    overage: null
+    included:
+      - 'Ecommerce CRM: customer database'
+      - Individual customer profiles
+      - Filtering & segmentation
+      - 'Retention Analysis: customer lifetime metrics'
+      - Cohort comparisons
+  - name: Premium
+    price_monthly: 599
+    price_monthly_billed_annually: 499
+    price_annual_total: 5990
+    currency: USD
+    annual_saving: 1198
+    price_qualifier: from
+    includes_previous: Pro
+    quota:
+      metric: new customers per month
+      note: >-
+        Premium is metered on the average number of first-time buyers acquired
+        per month, computed over the trailing 3 months (holiday-season spikes
+        excluded). An on-page estimator quotes the tier; larger volumes are
+        quoted by sales ("Get an estimate" -> "Sign up and we'll contact you
+        with your custom quote").
+    overage: custom quote
+    included:
+      - 'Email Marketing: manual emails'
+      - Email automation
+      - Customer feedback
+      - Drag & drop email editor
+      - Ready templates
+      - Sales recovery
+all_plans_include:
+  - Unlimited team members
+  - One-click installation plugin
+  - Live chat & email support
+  - Secure encrypted data storage
+api_access:
+  metered: false
+  note: >-
+    Metrilo does not sell or meter API access separately. The tracking/ingestion
+    API at https://trk.mtrl.me/v2 is available to every project on any paid plan
+    (and during the trial) using the project API Token + API Secret from
+    Settings -> Installation. There is no free API tier and no per-call pricing.
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://www.metrilo.com/pricing
+  http_status: 200

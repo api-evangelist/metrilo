@@ -1,18 +1,104 @@
-generated: '2026-07-20'
+generated: '2026-08-13'
 method: searched
-source: https://github.com/Metrilo/custom-integration
+source: https://api.swaggerhub.com/apis/metrilo/api
+docs: https://github.com/Metrilo/custom-integration
 versioning:
-  scheme: uri-path
+  scheme: uri-path + semver
   current: v2
+  current_spec_version: 2.1.1
+  released: '2021-06-23'
   base: https://trk.mtrl.me/v2
+  registry: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
+  note: >-
+    Two version axes. The callable path carries a major version (/v2); the
+    specification carries a semver revision (2.1.1) published to Metrilo's own
+    SwaggerHub org. Four revisions exist: 1.0.0 (2020-05-22), 2.0.0
+    (2020-08-03), 2.0.1 (2021-06-02), 2.1.1 (2021-06-23). No 2.1.0 was ever
+    published. Full diffs in changelog/metrilo-changelog.yml.
+  spec_servers_defect: >-
+    The current specification declares servers[] as https://trk.mtrl.me with no
+    /v2 segment, contradicting every published example and the real base URL.
+    Corrected in overlays/metrilo-tracking-api-overlay.yaml, not by editing the
+    verbatim spec.
 deprecation:
   policy_url: null
   sunset_header: false
-  note: No published deprecation policy or RFC 8594 Sunset/Deprecation header support.
+  deprecation_header: false
+  note: >-
+    No published deprecation policy and no RFC 8594 Sunset/Deprecation header
+    support. Metrilo has nevertheless retired things without one, which is
+    exactly what a policy would have covered:
+  observed_retirements:
+    - what: API v1
+      evidence: >-
+        The developer guide still says "If you have integrated with the previous
+        version of our API, the guide has been moved here" and links api_v1.md —
+        that file returns 404. The v1 migration guide has been deleted while the
+        link that promises it remains live.
+      checked_status: 404
+    - what: 'Legacy ingestion host: track.metrilo.com'
+      evidence: >-
+        Published as the production server in specification 2.0.1 (2021-06-02),
+        replaced by trk.mtrl.me in 2.1.1 three weeks later. track.metrilo.com no
+        longer resolves in DNS (probed 2026-08-13). No sunset notice was issued
+        and the retired host is still readable in the 2.0.1 spec SwaggerHub
+        continues to serve.
+      checked_status: 0
 sla:
   url: null
+  uptime_target: null
+  published: false
 status_page: null
+status_page_note: >-
+  No status page. status.metrilo.com does not resolve and /status on the
+  marketing site returns 404. No third-party status provider (Statuspage,
+  Instatus, Better Stack) is referenced anywhere in the docs.
+support:
+  channels: [live chat, email]
+  help_center: https://docs.metrilo.com
+  note: Support is the in-app Intercom chat plus email; there is no developer support channel or forum.
+maturity:
+  api_last_changed: '2021-06-23'
+  docs_last_changed: '2021-06-23'
+  newest_first_party_package: '2023-10-13'
+  assessment: >-
+    Frozen but live. The contract has not moved in five years, the developer
+    guide's last commit is the same day as the final spec revision, and the
+    only client library released since is the Magento 2 extension in 2023.
+    The endpoint itself is healthy — an unauthenticated POST to
+    https://trk.mtrl.me/v2/customer returns 401, so the service is running and
+    enforcing auth. Metrilo is still sold at published prices (see
+    plans/metrilo-plans-pricing.yml). Read this as a maintained,
+    feature-complete integration surface, not an abandoned one — but do not
+    expect new capability.
+broken_surfaces:
+  - surface: Marketing blog
+    url: https://www.metrilo.com/blog
+    status: 500
+    detail: >-
+      The entire WordPress blog returns HTTP 500 from the Apache/2.4.29 origin
+      behind Cloudflare — the index, /blog/page/1, /blog/sitemap_index.xml and
+      individual posts all fail identically. robots.txt still advertises
+      https://www.metrilo.com/blog/sitemap_index.xml, which also 500s. The Blog
+      pointer has been removed from apis.yml because the surface is down.
+    checked: '2026-08-13'
+  - surface: v1 API guide
+    url: https://github.com/Metrilo/custom-integration/blob/master/api_v1.md
+    status: 404
+    detail: Linked from the current developer guide; the file does not exist.
+    checked: '2026-08-13'
+  - surface: Legacy ingestion host
+    url: https://track.metrilo.com/v2
+    status: 0
+    detail: DNS does not resolve. Still named as the production server in published specification 2.0.1.
+    checked: '2026-08-13'
 deprecated_operations: []
-note: >-
-  Metrilo (now part of Brevo) versions its tracking API via the /v2 path prefix.
-  No public status page, SLA, or deprecation policy was found.
+cross_links:
+  changelog: changelog/metrilo-changelog.yml
+  openapi: openapi/metrilo-tracking-api-openapi.yml
+  packages: packages/metrilo-packages.yml
+x-evidence:
+  - {fetched: '2026-08-13', url: 'https://api.swaggerhub.com/apis/metrilo/api', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://www.metrilo.com/blog/', http_status: 500}
+  - {fetched: '2026-08-13', url: 'https://status.metrilo.com/', http_status: 0}
+  - {fetched: '2026-08-13', url: 'https://www.metrilo.com/status', http_status: 404}

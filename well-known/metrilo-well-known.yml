@@ -1,0 +1,75 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of /.well-known/* on every Metrilo host
+note: >-
+  Metrilo serves NO first-party /.well-known/ discovery document. Two failure
+  shapes were observed and both are recorded here so the absence is not later
+  mistaken for a presence:
+  (1) www.metrilo.com answers HTTP 200 to EVERY /.well-known/* path with the
+  same 24,562-byte marketing HTML page (a catch-all, not a document) — these are
+  soft-200s and are treated as misses;
+  (2) docs.metrilo.com DOES return a real RFC 9116 security.txt, but the
+  document belongs to INTERCOM, the vendor that hosts the Metrilo help center
+  (Canonical: https://app.intercom.com/.well-known/security.txt, Contact:
+  security@intercom.com, bugcrowd.com/intercom). It is not Metrilo's
+  vulnerability-disclosure program and is NOT credited to Metrilo.
+  No WellKnown or SecurityTxt pointer is emitted in apis.yml as a result.
+hosts:
+  - host: www.metrilo.com
+    verdict: soft-200-catchall
+    documents:
+      - {path: /.well-known/security.txt, status: 200, content_type: 'text/html', real_document: false}
+      - {path: /.well-known/openid-configuration, status: 200, content_type: 'text/html', real_document: false}
+      - {path: /.well-known/oauth-authorization-server, status: 200, content_type: 'text/html', real_document: false}
+      - {path: /.well-known/api-catalog, status: 200, content_type: 'text/html', real_document: false}
+      - {path: /.well-known/ai-plugin.json, status: 200, content_type: 'text/html', real_document: false}
+      - {path: /.well-known/agent-card.json, status: 200, content_type: 'text/html', real_document: false}
+      - {path: /.well-known/agent.json, status: 200, content_type: 'text/html', real_document: false}
+  - host: metrilo.com
+    verdict: redirect-to-www
+    documents:
+      - {path: /.well-known/security.txt, status: 301, real_document: false}
+      - {path: /.well-known/agent-card.json, status: 301, real_document: false}
+  - host: app.metrilo.com
+    verdict: clean-404
+    documents:
+      - {path: /.well-known/security.txt, status: 404, real_document: false}
+      - {path: /.well-known/openid-configuration, status: 404, real_document: false}
+      - {path: /.well-known/oauth-authorization-server, status: 404, real_document: false}
+      - {path: /.well-known/api-catalog, status: 404, real_document: false}
+      - {path: /.well-known/ai-plugin.json, status: 404, real_document: false}
+      - {path: /.well-known/agent-card.json, status: 404, real_document: false}
+      - {path: /.well-known/agent.json, status: 404, real_document: false}
+  - host: docs.metrilo.com
+    verdict: third-party-document
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: 'text/plain'
+        real_document: true
+        belongs_to: Intercom (help-center platform vendor)
+        file: metrilo-docs-host-intercom-security.txt
+        credited_to_metrilo: false
+      - {path: /.well-known/openid-configuration, status: 404, real_document: false}
+      - {path: /.well-known/oauth-authorization-server, status: 404, real_document: false}
+      - {path: /.well-known/api-catalog, status: 404, real_document: false}
+      - {path: /.well-known/ai-plugin.json, status: 404, real_document: false}
+      - {path: /.well-known/agent-card.json, status: 404, real_document: false}
+      - {path: /.well-known/agent.json, status: 404, real_document: false}
+  - host: trk.mtrl.me
+    verdict: clean-404
+    documents:
+      - {path: /.well-known/security.txt, status: 404, real_document: false}
+      - {path: /.well-known/openid-configuration, status: 404, real_document: false}
+      - {path: /.well-known/oauth-authorization-server, status: 404, real_document: false}
+      - {path: /.well-known/api-catalog, status: 404, real_document: false}
+      - {path: /.well-known/ai-plugin.json, status: 404, real_document: false}
+      - {path: /.well-known/agent-card.json, status: 404, real_document: false}
+      - {path: /.well-known/agent.json, status: 404, real_document: false}
+summary:
+  first_party_documents: 0
+  soft_200_catchalls: 7
+  third_party_documents: 1
+  agent_card_found: false
+  pointer_emitted: false
+checked: '2026-08-13'

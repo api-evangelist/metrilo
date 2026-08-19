@@ -1,0 +1,106 @@
+generated: '2026-08-13'
+method: probed
+source: https://api.swaggerhub.com/apis/metrilo/api
+docs: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
+note: >-
+  Metrilo publishes NO prose changelog, release-notes page or dated "what's new"
+  feed. It does, however, maintain a versioned API registry on SwaggerHub under
+  its own org (metrilo/api) with four dated revisions, and the SwaggerHub
+  registry API answers unauthenticated. The entries below are therefore
+  MEASURED — each version's spec was fetched and diffed against its
+  predecessor — not transcribed from a provider-written changelog. Dates are
+  SwaggerHub X-Created/X-Modified.
+scheme: semver
+registry:
+  provider: SwaggerHub
+  url: https://api.swaggerhub.com/apis/metrilo/api
+  owner: metrilo
+  api: api
+  versions_total: 4
+  default_version: 2.1.1
+  all_versions_marked_published: false
+current:
+  version: 2.1.1
+  released: '2021-06-23'
+  spec: OpenAPI 3.0.1
+  operations: 10
+  mirror: https://github.com/Metrilo/custom-integration/blob/master/metrilo_open_api_specification.yml
+  mirror_is_byte_identical: true
+staleness:
+  last_change: '2021-06-23'
+  days_since_last_change_at_check: 1877
+  note: >-
+    The API contract has not changed in five years. Metrilo was acquired by
+    Brevo (formerly Sendinblue) in 2021 and the final spec revision lands three
+    weeks before the last commit to the developer guide (2021-06-23). The
+    product is still sold and the endpoint still answers, but the contract is
+    frozen.
+entries:
+  - version: 2.1.1
+    date: '2021-06-23'
+    breaking: true
+    additions:
+      - Added POST /customer/tag — add CRM tags to an existing customer.
+      - Added POST /customer/untag — remove CRM tags from a customer.
+      - 'Added 4 schemas: customerTagObject, customerTagOperationObject, customerUntagObject, customerUntagOperationObject (15 -> 19).'
+    changes:
+      - >-
+        BREAKING — servers[] changed from https://track.metrilo.com/v2 to
+        https://trk.mtrl.me, dropping the /v2 path segment. The /v2 prefix is
+        still required in practice; every published curl example uses
+        https://trk.mtrl.me/v2/<resource>. The spec's servers[] is wrong.
+      - >-
+        REGRESSION — the X-Digest header parameter, declared on operations in
+        2.0.0 and 2.0.1, was removed from the specification. The header is still
+        mandatory on every backend endpoint except POST /customer, so from 2.1.1
+        onward the HMAC requirement exists only in prose. This is why the
+        current spec declares no securitySchemes at all.
+    highlights: Customer tagging reaches the API; the spec's own auth and base-URL fidelity regresses.
+  - version: 2.0.1
+    date: '2021-06-02'
+    breaking: false
+    additions: []
+    changes:
+      - >-
+        Added a real production server to servers[] — https://track.metrilo.com/v2 —
+        alongside the SwaggerHub mock. That hostname NO LONGER RESOLVES (probed
+        2026-08-13, DNS failure); it was superseded by trk.mtrl.me three weeks later.
+    highlights: First revision to name a callable host rather than only the SwaggerHub virtual server.
+  - version: 2.0.0
+    date: '2020-08-03'
+    breaking: true
+    additions:
+      - Declared the X-Digest header parameter on operations — "HMAC signature of the request body and the project API secret".
+    changes:
+      - Request signing becomes part of the published contract.
+    highlights: HMAC-SHA256 request signing enters the specification.
+  - version: 1.0.0
+    date: '2020-05-22'
+    modified: '2020-05-27'
+    breaking: false
+    additions:
+      - 'Initial published contract: 8 operations across /category, /customer, /product, /order and their /batch variants; 15 schemas.'
+    changes:
+      - servers[] pointed only at the SwaggerHub virtual mock (virtserver.swaggerhub.com/metrilo/api/1.0.0) — no production host was published.
+    highlights: First OpenAPI 3.0.1 revision of the Metrilo tracking API.
+gaps:
+  - >-
+    No 2.1.0 exists in the registry — the sequence jumps 2.0.1 -> 2.1.1. The
+    Magento 2 plugin carries a 2.1.0 tag (2023-10-13); the numbering spaces are
+    unrelated.
+  - >-
+    The developer guide links a v1 migration document at api_v1.md
+    ("If you have integrated with the previous version of our API, the guide
+    has been moved here") — that file returns 404. The v1 guide is gone.
+cross_links:
+  lifecycle: lifecycle/metrilo-lifecycle.yml
+  openapi: openapi/metrilo-tracking-api-openapi.yml
+  overlay: overlays/metrilo-tracking-api-overlay.yaml
+x-evidence:
+  - {fetched: '2026-08-13', url: 'https://api.swaggerhub.com/apis/metrilo/api', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://api.swaggerhub.com/apis/metrilo/api/2.1.1', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://api.swaggerhub.com/apis/metrilo/api/2.0.1', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://api.swaggerhub.com/apis/metrilo/api/2.0.0', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://api.swaggerhub.com/apis/metrilo/api/1.0.0', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://track.metrilo.com/v2/customer', http_status: 0, note: DNS does not resolve}
+  - {fetched: '2026-08-13', url: 'https://github.com/Metrilo/custom-integration/blob/master/api_v1.md', http_status: 404}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Metrilo Tracking & CRM Categories Orders API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update a single order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a single order"
+        },
+        {
+          "info": {
+            "name": "Bulk import orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://trk.mtrl.me/v2/order/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Digest",
+              "value": "{{X-Digest}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk import orders"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

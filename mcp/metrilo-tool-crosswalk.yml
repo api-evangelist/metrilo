@@ -1,0 +1,153 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/metrilo-mcp.yml + openapi/metrilo-tracking-api-openapi.yml
+note: >-
+  Metrilo ships no MCP server; mcp/metrilo-mcp.yml is an API Evangelist
+  CANDIDATE tool list (deployment.mode: none). This crosswalk therefore binds
+  candidate tools to real operations rather than recording a live agent surface.
+  Its value is that Metrilo publishes TWO operationId vocabularies for the same
+  ten operations — its own OpenAPI 3.0.1 (metrilo_open_api_specification.yml,
+  ids like `customerOperation`) and the API Evangelist refinement (ids like
+  `createCustomer`) — so every row carries both. The PROVIDER ids are
+  authoritative for anyone calling the API; the AE ids are what the repo's
+  skills/ and arazzo/ artifacts reference.
+surfaces:
+  openapi:
+    provider_published:
+      file: openapi/metrilo-tracking-api-openapi.yml
+      source: https://github.com/Metrilo/custom-integration/blob/master/metrilo_open_api_specification.yml
+      version: 2.1.1
+      spec: OpenAPI 3.0.1
+      operations: 10
+      gated: false
+    api_evangelist_refinement:
+      files:
+        - openapi/metrilo-customers-api-openapi.yml
+        - openapi/metrilo-categories-api-openapi.yml
+        - openapi/metrilo-products-api-openapi.yml
+        - openapi/metrilo-orders-api-openapi.yml
+      operations: 10
+  graphql:
+    present: false
+  mcp:
+    present: false
+    status: candidate
+    manifest: mcp/metrilo-mcp.yml
+    gated: n/a
+  javascript_tracking:
+    present: true
+    artifact: components/metrilo-components.yml
+    note: >-
+      window.metrilo is a browser-only event surface with 13 functions. It is
+      NOT reachable over HTTP by an agent and has no REST equivalent for most
+      of its calls — recorded in client_only[] below.
+crosswalk:
+  - tool: create_customer
+    category: crm
+    rest: [customerOperation]
+    rest_ae: [createCustomer]
+    path: POST /customer
+    binding: rest
+    confidence: high
+    note: The only operation that does NOT require the X-Digest HMAC header.
+  - tool: batch_customers
+    category: crm
+    rest: [customerBatchOperation]
+    rest_ae: [batchCustomers]
+    path: POST /customer/batch
+    binding: rest
+    confidence: high
+  - tool: tag_customer
+    category: crm
+    rest: [customerTagOperation]
+    rest_ae: [tagCustomer]
+    path: POST /customer/tag
+    binding: rest
+    confidence: high
+  - tool: untag_customer
+    category: crm
+    rest: [customerUntagOperation]
+    rest_ae: [untagCustomer]
+    path: POST /customer/untag
+    binding: rest
+    confidence: high
+  - tool: create_category
+    category: catalog
+    rest: [categoryOperation]
+    rest_ae: [createCategory]
+    path: POST /category
+    binding: rest
+    confidence: high
+  - tool: batch_categories
+    category: catalog
+    rest: [categoryBatchOperation]
+    rest_ae: [batchCategories]
+    path: POST /category/batch
+    binding: rest
+    confidence: high
+  - tool: create_product
+    category: catalog
+    rest: [productOperation]
+    rest_ae: [createProduct]
+    path: POST /product
+    binding: rest
+    confidence: high
+  - tool: batch_products
+    category: catalog
+    rest: [productBatchOperation]
+    rest_ae: [batchProducts]
+    path: POST /product/batch
+    binding: rest
+    confidence: high
+  - tool: create_order
+    category: orders
+    rest: [orderOperation]
+    rest_ae: [createOrder]
+    path: POST /order
+    binding: rest
+    confidence: high
+  - tool: batch_orders
+    category: orders
+    rest: [orderBatchOperation]
+    rest_ae: [batchOrders]
+    path: POST /order/batch
+    binding: rest
+    confidence: high
+mcp_only: []
+rest_only: []
+client_only:
+  - surface: window.metrilo
+    reason: >-
+      Browser-side tracking functions with no server-side REST equivalent —
+      viewPage, viewArticle, viewCategory, viewProduct, search, addToCart,
+      removeFromCart, checkout, customEvent, integrateForm. Behavioural events
+      can only be produced from a page, so an agent cannot emit them through
+      the ingestion API. This is a genuine surface divergence, not a gap.
+    functions: 10
+  - surface: window.metrilo (overlapping)
+    reason: >-
+      identify, customerDetails and applyTags overlap semantically with
+      createCustomer / tagCustomer but operate on the anonymous cbuid session
+      rather than on the server-side record.
+    functions: 3
+coverage:
+  tools_named: 10
+  tools_bound: 10
+  mcp_only: 0
+  rest_ops_total: 10
+  rest_ops_with_tool: 10
+  client_only_functions: 13
+  live_mcp_server: false
+input_schemas:
+  authoritative_source: openapi/metrilo-tracking-api-openapi.yml
+  envelope: '{ time: <epoch ms>, token: <API Token>, params: <object|array> }'
+  note: >-
+    Every operation takes the same three-field envelope; the tool's real input
+    contract is the requestBody schema of its bound operation
+    (components.schemas.*OperationObject in the provider spec).
+  transport_caveat: >-
+    The provider spec declares servers[] as https://trk.mtrl.me with NO /v2
+    prefix, while every published curl example and the apis.yml baseURL use
+    https://trk.mtrl.me/v2. Use /v2. Captured in
+    overlays/metrilo-tracking-api-overlay.yaml rather than by editing the
+    verbatim spec.

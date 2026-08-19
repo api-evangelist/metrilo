@@ -1,39 +1,115 @@
-generated: '2026-07-20'
+generated: '2026-08-13'
 method: searched
 source: https://github.com/Metrilo
+registries_checked: [packagist, npm, pypi, rubygems, wordpress.org, github]
 note: >-
-  Metrilo ships no language SDK. Its first-party client libraries are ecommerce
-  platform integration plugins (WooCommerce, Magento, OpenCart) plus a debug
-  Chrome extension. All are published in the Metrilo GitHub organization.
+  Metrilo ships NO language SDK. Its first-party client libraries are ecommerce
+  platform integration plugins (WooCommerce, Magento 1 & 2, OpenCart) plus a
+  debug Chrome extension, all published in the Metrilo GitHub organization.
+  Exactly one is distributed through a real package registry — the Magento 2
+  extension on Packagist. npm, PyPI and RubyGems carry no Metrilo package, and
+  the WooCommerce plugin is NOT listed on wordpress.org (api.wordpress.org
+  returns "Plugin not found"), so it can only be installed from GitHub.
+currency_finding: >-
+  Every first-party package predates the current API contract's maintenance
+  window and most predate it by years. The API's own specification last changed
+  2021-06-23; the newest first-party package release is the Magento 2 extension
+  2.1.0 on 2023-10-13, and the next-newest is from 2021. The OpenCart plugin
+  (2015) and the Chrome debug extension (2016) have had no commit in a decade.
+  Metrilo was acquired by Brevo in 2021 and the client-library estate has been
+  in maintenance-only mode since.
 packages:
+  - language: php
+    platform: Magento 2
+    registry: packagist
+    name: metrilo/analytics-magento2-extension
+    url: https://packagist.org/packages/metrilo/analytics-magento2-extension
+    install: composer require metrilo/analytics-magento2-extension
+    source: https://github.com/Metrilo/metrilo-magento2-integration
+    official: true
+    version: 2.1.0
+    published: '2023-10-13'
+    downloads_total: 3768
+    downloads_monthly: 55
+    note: >-
+      The only Metrilo package on a real package registry. Version read from
+      repo.packagist.org/p2/metrilo/analytics-magento2-extension.json;
+      the matching git tag 2.1.0 is dated 2023-10-13.
   - language: php
     platform: WooCommerce (WordPress)
     registry: github
     name: metrilo-woocommerce-integration
     url: https://github.com/Metrilo/metrilo-woocommerce-integration
+    install: Download the plugin ZIP from GitHub and upload via WordPress admin.
     official: true
-  - language: php
-    platform: Magento 2
-    registry: github
-    name: metrilo-magento2-integration
-    url: https://github.com/Metrilo/metrilo-magento2-integration
-    official: true
+    version: 2.0.1
+    published: '2021-07-05'
+    note: >-
+      Latest git tag 2.0.1 (commit 2021-07-05). Not published on wordpress.org —
+      api.wordpress.org/plugins/info/1.0/metrilo.json returns "Plugin not
+      found", so there is no auto-update channel and no install count.
+      The last GitHub *release* object is 1.4.1 from 2016.
   - language: php
     platform: Magento 1
     registry: github
     name: metrilo-magento1-integration
     url: https://github.com/Metrilo/metrilo-magento1-integration
     official: true
+    version: 2.0.2
+    published: '2020-10-12'
+    note: >-
+      Latest git tag 2.0.2 (commit 2020-10-12). Magento 1 reached end of life in
+      June 2020, so this plugin targets an unsupported platform.
   - language: php
     platform: OpenCart
     registry: github
     name: OpenCart-Plugin
     url: https://github.com/Metrilo/OpenCart-Plugin
     official: true
+    version: null
+    published: '2015-03-11'
+    note: >-
+      No tags and no releases — nothing to read a version from, so version is
+      null rather than guessed. Currency taken from the last push to the
+      default branch (2015-03-11). Distributed via zQmod.
   - language: javascript
     platform: Chrome extension (debugging)
     registry: github
     name: metrilo-chrome-extension
     url: https://github.com/Metrilo/metrilo-chrome-extension
     official: true
-    note: Debug extension for inspecting Metrilo events; not a runtime SDK.
+    version: null
+    published: '2016-02-09'
+    note: >-
+      Debug extension for inspecting Metrilo events; not a runtime SDK. No tags
+      or releases, so version is null. Not listed on the Chrome Web Store under
+      the Metrilo org. Last push 2016-02-09.
+  - language: javascript
+    platform: browser
+    registry: cdn
+    name: Metrilo tracking library
+    url: https://trk.mtrl.me/tracking.js
+    install: '<script src="https://trk.mtrl.me/tracking.js?token=YOUR_TOKEN"></script>'
+    official: true
+    version: null
+    published: null
+    note: >-
+      The client-side tracking library is served straight from the provider's
+      own host as an UNPINNED script tag — there is no registry entry, no
+      jsDelivr/unpkg mirror, and no version in the URL. A consumer cannot tell
+      which build they are loading and neither can we, so both fields are null
+      by measurement rather than omission. Surface detail in
+      components/metrilo-components.yml.
+no_sdk_languages: [python, ruby, java, go, dotnet, node]
+excluded_repos:
+  note: >-
+    The Metrilo GitHub org also contains ~15 forks and internal Ruby utilities
+    (pipedrive-ruby, mailgun-ruby, roadie, email_validator, retrier, payday,
+    fake_braintree, kafdrop, health_checks, metrilocop). These are engineering
+    dependencies and third-party forks, not Metrilo client libraries, and are
+    deliberately excluded.
+x-evidence:
+  - {fetched: '2026-08-13', url: 'https://api.github.com/orgs/Metrilo/repos', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://repo.packagist.org/p2/metrilo/analytics-magento2-extension.json', http_status: 200}
+  - {fetched: '2026-08-13', url: 'https://api.wordpress.org/plugins/info/1.0/metrilo.json', http_status: 200, result: 'Plugin not found'}
+  - {fetched: '2026-08-13', url: 'https://registry.npmjs.org/-/v1/search?text=metrilo', http_status: 200, result: 'no first-party package'}
