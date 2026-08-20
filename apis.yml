@@ -45,6 +45,15 @@ created: '2026-07-17'
 modified: '2026-08-13'
 tags:
 - Company
+- E-Commerce
+- Analytics
+- CRM
+- Email Marketing
+- Customer Retention
+- Tracking
+- Marketing
+tags_raw:
+- Company
 - Ecommerce
 - Analytics
 - CRM
@@ -83,6 +92,8 @@ apis:
   humanURL: https://github.com/Metrilo/custom-integration
   baseURL: https://trk.mtrl.me/v2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -95,6 +106,8 @@ apis:
   humanURL: https://github.com/Metrilo/custom-integration
   baseURL: https://trk.mtrl.me/v2
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
