@@ -114,32 +114,20 @@ apis:
     url: openapi/metrilo-products-api-openapi.yml
   - type: Documentation
     url: https://github.com/Metrilo/custom-integration
-- aid: metrilo:metrilo-tracking-api
-  name: Metrilo Tracking API
-  description: >-
-    Metrilo's own published specification for the tracking and CRM ingestion
-    API — OpenAPI 3.0.1, version 2.1.1, 10 operations and 19 schemas covering
-    categories, products, customers (including tag/untag) and orders, single
-    and batch. Maintained by Metrilo on its SwaggerHub organization and
-    mirrored byte-identically as metrilo_open_api_specification.yml in the
-    custom-integration repo. This is the authoritative contract; the four
-    per-resource entries above are the API Evangelist refinement of the same
-    ten operations under readable operationIds.
-  humanURL: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
+- aid: metrilo:metrilo-api-api
+  name: Metrilo API
+  description: The API API from Metrilo — 10 operation(s) for api.
+  humanURL: https://github.com/Metrilo/custom-integration
   baseURL: https://trk.mtrl.me/v2
   tags:
-  - Tracking
-  - Ingestion
-  - CRM
+  - API
   properties:
   - type: OpenAPI
-    url: openapi/metrilo-tracking-api-openapi.yml
+    url: openapi/metrilo-api-api-openapi.yml
   - type: APIReference
     url: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
   - type: Documentation
     url: https://github.com/Metrilo/custom-integration
-  - type: Overlay
-    url: overlays/metrilo-tracking-api-overlay.yaml
   - type: ToolCrosswalk
     url: mcp/metrilo-tool-crosswalk.yml
 common:
