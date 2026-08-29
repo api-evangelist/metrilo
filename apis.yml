@@ -10,6 +10,18 @@ description: >-
   client-side JavaScript tracking library (window.metrilo), and a server-side
   ingestion API at trk.mtrl.me/v2 that pushes customers, categories, products,
   and orders using an API Token plus an HMAC-SHA256 X-Digest request signature.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
