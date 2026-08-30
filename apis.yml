@@ -131,7 +131,8 @@ apis:
   description: The API API from Metrilo — 10 operation(s) for api.
   humanURL: https://github.com/Metrilo/custom-integration
   baseURL: https://trk.mtrl.me/v2
-  tags:
+  tags: []
+  tags_raw:
   - API
   properties:
   - type: OpenAPI
