@@ -1,0 +1,680 @@
+openapi: 3.2.0
+info:
+  version: 2.1.1
+  title: Metrilo tracking API
+  description: Metrilo analytics tracking API
+  contact:
+    name: Metrilo
+    email: support@metrilo.com
+    url: https://www.metrilo.com
+servers:
+- url: https://trk.mtrl.me
+tags:
+- name: API
+paths:
+  /category:
+    post:
+      tags:
+      - API
+      description: Adds a new category or updates an existing one in Metrilo.
+      operationId: categoryOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/categoryOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /category/batch:
+    post:
+      tags:
+      - API
+      description: Adds multiple categories or updates existing ones in Metrilo.
+      operationId: categoryBatchOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/categoryBatchOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /customer:
+    post:
+      tags:
+      - API
+      description: Adds a new customer or updates an existing one in Metrilo.
+      operationId: customerOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/customerOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /customer/tag:
+    post:
+      tags:
+      - API
+      description: Adds tags to an existing customer in Metrilo.
+      operationId: customerTagOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/customerTagOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /customer/untag:
+    post:
+      tags:
+      - API
+      description: Removes tags from an existing customer in Metrilo.
+      operationId: customerUntagOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/customerUntagOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /customer/batch:
+    post:
+      tags:
+      - API
+      description: Adds multiple customers or updates existing ones in Metrilo.
+      operationId: customerBatchOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/customerBatchOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /order:
+    post:
+      tags:
+      - API
+      description: Adds a new order or updates an existing one in Metrilo.
+      operationId: orderOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/orderOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /order/batch:
+    post:
+      tags:
+      - API
+      description: Adds multiple orders or updates existing ones in Metrilo.
+      operationId: orderBatchOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/orderBatchOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /product:
+    post:
+      tags:
+      - API
+      description: Adds a new product or updates an existing one in Metrilo.
+      operationId: productOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/productOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+  /product/batch:
+    post:
+      tags:
+      - API
+      description: Adds multiple products or updates existing ones in Metrilo.
+      operationId: productBatchOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/productBatchOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+components:
+  responses:
+    success:
+      description: Success response.
+    errorBadRequest:
+      description: Bad request from client.
+    errorPaymentRequired:
+      description: Project requires payment.
+    internalServerError:
+      description: Error from server while processing request.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
+    errorUnauthorized:
+      description: Project token is invalid.
+    badGateway:
+      description: Error from server accepting request.
+  schemas:
+    customerUntagObject:
+      allOf:
+      - $ref: '#/components/schemas/visitorIdentityObject'
+      - type: object
+        required:
+        - createdAt
+        - email
+        - tags
+        properties:
+          email:
+            type: string
+            description: The email of the customer.
+            example: johnybravo@metrilo.com
+          tags:
+            type: array
+            items:
+              type: string
+              description: Tag labels that are removed from the customer in Metrilo. (missing tags are omitted)
+              example:
+              - early_subscriber
+              - big_spender
+    categoryOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/categoryObject'
+    customerTagOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerTagObject'
+    visitorIdentityObject:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          description: Visitor's email address.
+          example: johnybravo@metrilo.com
+    categoryObject:
+      allOf:
+      - $ref: '#/components/schemas/categoryIdObject'
+      - required:
+        - name
+        properties:
+          name:
+            type: string
+            description: Category display name in the shop.
+            example: Clothing
+          url:
+            type: string
+            description: Landing page for the shop category.
+            example: http://shop-tavan.customerboard.co/cagetory/clothing
+    orderObject:
+      type: object
+      required:
+      - id
+      - createdAt
+      - amount
+      - products
+      - status
+      properties:
+        id:
+          type: string
+          description: Unique ID of the order in the shop's database.
+          example: 14
+        createdAt:
+          type: integer
+          description: Integer representation of the time the order was created (milliseconds from 1970).
+          example: 1518004715732
+        email:
+          type: string
+          description: Customer's email address. Used to link to an existing customer.
+          example: johnybravo@metrilo.com
+        amount:
+          type: number
+          description: Total amount of the order, including all shipping expenses, tax and the price of items.
+          example: 308.42
+        coupons:
+          type: array
+          items:
+            type: string
+          description: Coupons applied to the order. Stored case insensitive.
+          example:
+          - EASTER15OFF
+        status:
+          type: string
+          description: State of the order.
+          example: completed
+        products:
+          type: array
+          items:
+            type: object
+            required:
+            - productId
+            - quantity
+            properties:
+              productId:
+                type: string
+                description: The ID of the product in the shop's database.
+                example: 91
+              quantity:
+                type: number
+                description: How many pieces of the product the visitor has added to the cart.
+                example: 2
+        billing:
+          type: object
+          description: Order's billing information.
+          properties:
+            address:
+              type: string
+              description: Full billing address.
+              example: 15 Somewhere Road, Brynmenyn
+            city:
+              type: string
+              description: The exact city of the address.
+              example: Bridgend
+            countryCode:
+              type: string
+              description: Billing country 2-letter ISO code.
+              example: CA
+            phone:
+              type: string
+              description: Phone number to contact for further details about the order.
+              example: 01559 032133
+            postcode:
+              type: string
+              description: Postcode for delivery and billing.
+              example: NW1 4DF
+            paymentMethod:
+              type: string
+              description: How the visitor will pay for the item(s), e.g. paypal, check, etc.
+              example: PayPal
+        ipAddress:
+          type: string
+          description: The IP address of the customer when they placed the order.
+          example: 111.222.333.444
+    orderOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/orderObject'
+    customerOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerObject'
+    customerObject:
+      allOf:
+      - $ref: '#/components/schemas/visitorIdentityObject'
+      - type: object
+        required:
+        - createdAt
+        properties:
+          createdAt:
+            type: integer
+            description: Integer representation of the time the customer was created (milliseconds from 1970).
+            example: 1518004715732
+          firstName:
+            type: string
+            description: Customer's first name.
+            example: Johny
+          lastName:
+            type: string
+            description: Customer's last name.
+            example: Bravo
+          subscribed:
+            type: boolean
+            description: If the user has opted in for receiving emails.
+            example: true
+          tags:
+            type: array
+            items:
+              type: string
+              description: Tag labels that are assigned to the customer in Metrilo. (tags are merged, not overwritten)
+              example:
+              - early_subscriber
+              - big_spender
+    customerUntagOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerUntagObject'
+    categoryIdObject:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: Unique ID of category in the shop database.
+          example: 12
+    basicBackendObject:
+      type: object
+      required:
+      - time
+      - token
+      properties:
+        time:
+          type: integer
+          description: Integer representation of the event time (milliseconds from 1970).
+          example: 1518004715732
+        token:
+          type: string
+          description: Shop API token.
+          example: ccc111ddddaaaaac
+        platform:
+          type: string
+          description: Shop platform versioning.
+          example: Wordpress 4.2.7 / Woocommerce 3.5
+        pluginVersion:
+          type: string
+          description: Metrilo plugin version.
+          example: 1.1.0
+    productOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/productObject'
+    customerTagObject:
+      allOf:
+      - $ref: '#/components/schemas/visitorIdentityObject'
+      - type: object
+        required:
+        - createdAt
+        - email
+        - tags
+        properties:
+          email:
+            type: string
+            description: The email of the customer.
+            example: johnybravo@metrilo.com
+          tags:
+            type: array
+            items:
+              type: string
+              description: Tag labels that are assigned to the customer in Metrilo. (tags are merged, not overwritten)
+              example:
+              - early_subscriber
+              - big_spender
+    orderBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/orderObject'
+    productBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/productObject'
+    productObject:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        categories:
+          type: array
+          items:
+            type: string
+          description: Category ID-s of the product in the shop's database
+          example:
+          - '42'
+          - '13'
+        id:
+          type: string
+          description: The ID of the product in the shop's database.
+          example: '91'
+        sku:
+          type: string
+          description: Unique product identifier from the shop.
+          example: CM01-R
+        imageUrl:
+          type: string
+          description: Absolute URL to the cover image of the product.
+          example: http://shop-tavan.customerboard.co/wp-content/uploads/2018/02/91.jpg
+        name:
+          type: string
+          description: The name of the product, as displayed in the shop.
+          example: Rare unique blue shirt
+        price:
+          type: number
+          description: Price of the product. (Price is required, if there's no option defined.)
+          example: 23.65
+        url:
+          type: string
+          description: Landing page of the product within the shop.
+          example: http://shop-tavan.customerboard.co/product/rare-unique-blue-shirt/
+        options:
+          type: array
+          description: Product options/variations. (options are merged, not overwritten)
+          items:
+            type: object
+            description: Product option (size, color, variant, etc.) is not mandatory.
+            required:
+            - id
+            - name
+            - price
+            properties:
+              id:
+                type: string
+                description: The ID of the product option in the shop's database.
+                example: '52'
+              sku:
+                type: string
+                description: Unique idenrifier from the shop.
+                example: CM01-W
+              name:
+                type: string
+                description: The name/title of the option as displayed in the shop.
+                example: On Sale - size XS
+              price:
+                type: number
+                description: Price of the option for this product.
+                example: 15.99
+              imageUrl:
+                type: string
+                description: Absolute URL to the cover image of the product.
+                example: http://shop-tavan.customerboard.co/wp-content/uploads/2018/02/91.jpg
+    categoryBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - batch
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/categoryObject'
+    customerBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - batch
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/customerObject'
