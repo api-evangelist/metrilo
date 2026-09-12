@@ -144,6 +144,8 @@ apis:
   - type: ToolCrosswalk
     url: mcp/metrilo-tool-crosswalk.yml
 common:
+- type: Website
+  url: https://www.metrilo.com/
 - type: AgenticAccess
   url: agentic-access/metrilo-agentic-access.yml
 - type: Overlay
