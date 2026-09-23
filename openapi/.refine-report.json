@@ -1,20 +1,22 @@
 {
   "provider": "metrilo",
   "sources": [
-    "metrilo-categories-api-openapi.yml",
-    "metrilo-customers-api-openapi.yml",
-    "metrilo-orders-api-openapi.yml",
-    "metrilo-products-api-openapi.yml"
+    "_original/metrilo-tracking-api-openapi.yml"
   ],
   "outputs": [
-    "metrilo-categories-api-openapi.yml",
-    "metrilo-customers-api-openapi.yml",
-    "metrilo-orders-api-openapi.yml",
-    "metrilo-products-api-openapi.yml"
+    "metrilo-api-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "metrilo-tracking-api-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/metrilo-tracking-openapi.yml: archived document superseded by a larger archived document",
+    "metrilo-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
