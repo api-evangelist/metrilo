@@ -74,17 +74,64 @@ tags_raw:
 - Tracking
 - Marketing
 apis:
-- aid: metrilo:metrilo-api-api
-  name: Metrilo API
-  description: The API API from Metrilo — 10 operation(s) for api.
+- aid: metrilo:metrilo-category-api
+  name: Metrilo Category API
+  description: The Category API from Metrilo — 2 operation(s) for category.
   humanURL: https://github.com/Metrilo/custom-integration
   baseURL: https://trk.mtrl.me/v2
-  tags: []
-  tags_raw:
-  - API
+  tags:
+  - Category
   properties:
   - type: OpenAPI
-    url: openapi/metrilo-api-api-openapi.yml
+    url: openapi/metrilo-category-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
+  - type: Documentation
+    url: https://github.com/Metrilo/custom-integration
+  - type: ToolCrosswalk
+    url: mcp/metrilo-tool-crosswalk.yml
+- aid: metrilo:metrilo-customer-api
+  name: Metrilo Customer API
+  description: The Customer API from Metrilo — 4 operation(s) for customer.
+  humanURL: https://github.com/Metrilo/custom-integration
+  baseURL: https://trk.mtrl.me/v2
+  tags:
+  - Customer
+  properties:
+  - type: OpenAPI
+    url: openapi/metrilo-customer-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
+  - type: Documentation
+    url: https://github.com/Metrilo/custom-integration
+  - type: ToolCrosswalk
+    url: mcp/metrilo-tool-crosswalk.yml
+- aid: metrilo:metrilo-order-api
+  name: Metrilo Order API
+  description: The Order API from Metrilo — 2 operation(s) for order.
+  humanURL: https://github.com/Metrilo/custom-integration
+  baseURL: https://trk.mtrl.me/v2
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/metrilo-order-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
+  - type: Documentation
+    url: https://github.com/Metrilo/custom-integration
+  - type: ToolCrosswalk
+    url: mcp/metrilo-tool-crosswalk.yml
+- aid: metrilo:metrilo-product-api
+  name: Metrilo Product API
+  description: The Product API from Metrilo — 2 operation(s) for product.
+  humanURL: https://github.com/Metrilo/custom-integration
+  baseURL: https://trk.mtrl.me/v2
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/metrilo-product-api-openapi.yml
   - type: APIReference
     url: https://app.swaggerhub.com/apis/metrilo/api/2.1.1
   - type: Documentation

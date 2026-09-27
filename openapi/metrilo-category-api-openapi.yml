@@ -1,0 +1,154 @@
+openapi: 3.2.0
+info:
+  version: 2.1.1
+  title: Metrilo tracking Category API
+  description: Metrilo analytics tracking API
+  contact:
+    name: Metrilo
+    email: support@metrilo.com
+    url: https://www.metrilo.com
+servers:
+- url: https://trk.mtrl.me
+tags:
+- name: Category
+paths:
+  /category:
+    post:
+      tags:
+      - Category
+      description: Adds a new category or updates an existing one in Metrilo.
+      operationId: categoryOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/categoryOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+      summary: Category operation
+      x-summary-source: derived
+  /category/batch:
+    post:
+      tags:
+      - Category
+      description: Adds multiple categories or updates existing ones in Metrilo.
+      operationId: categoryBatchOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/categoryBatchOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+      summary: Category batch operation
+      x-summary-source: derived
+components:
+  schemas:
+    categoryObject:
+      allOf:
+      - $ref: '#/components/schemas/categoryIdObject'
+      - required:
+        - name
+        properties:
+          name:
+            type: string
+            description: Category display name in the shop.
+            example: Clothing
+          url:
+            type: string
+            description: Landing page for the shop category.
+            example: http://shop-tavan.customerboard.co/cagetory/clothing
+    categoryIdObject:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: Unique ID of category in the shop database.
+          example: 12
+    categoryOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/categoryObject'
+    categoryBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - batch
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/categoryObject'
+    basicBackendObject:
+      type: object
+      required:
+      - time
+      - token
+      properties:
+        time:
+          type: integer
+          description: Integer representation of the event time (milliseconds from 1970).
+          example: 1518004715732
+        token:
+          type: string
+          description: Shop API token.
+          example: ccc111ddddaaaaac
+        platform:
+          type: string
+          description: Shop platform versioning.
+          example: Wordpress 4.2.7 / Woocommerce 3.5
+        pluginVersion:
+          type: string
+          description: Metrilo plugin version.
+          example: 1.1.0
+  responses:
+    success:
+      description: Success response.
+    errorUnauthorized:
+      description: Project token is invalid.
+    badGateway:
+      description: Error from server accepting request.
+    internalServerError:
+      description: Error from server while processing request.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
+    errorBadRequest:
+      description: Bad request from client.
+    errorPaymentRequired:
+      description: Project requires payment.

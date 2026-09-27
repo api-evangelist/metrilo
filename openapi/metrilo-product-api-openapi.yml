@@ -1,0 +1,199 @@
+openapi: 3.2.0
+info:
+  version: 2.1.1
+  title: Metrilo tracking Product API
+  description: Metrilo analytics tracking API
+  contact:
+    name: Metrilo
+    email: support@metrilo.com
+    url: https://www.metrilo.com
+servers:
+- url: https://trk.mtrl.me
+tags:
+- name: Product
+paths:
+  /product:
+    post:
+      tags:
+      - Product
+      description: Adds a new product or updates an existing one in Metrilo.
+      operationId: productOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/productOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+      summary: Product operation
+      x-summary-source: derived
+  /product/batch:
+    post:
+      tags:
+      - Product
+      description: Adds multiple products or updates existing ones in Metrilo.
+      operationId: productBatchOperation
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/productBatchOperationObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/success'
+        '400':
+          $ref: '#/components/responses/errorBadRequest'
+        '401':
+          $ref: '#/components/responses/errorUnauthorized'
+        '402':
+          $ref: '#/components/responses/errorPaymentRequired'
+        '403':
+          $ref: '#/components/responses/errorForbidden'
+        '500':
+          $ref: '#/components/responses/internalServerError'
+        '502':
+          $ref: '#/components/responses/badGateway'
+      summary: Product batch operation
+      x-summary-source: derived
+components:
+  schemas:
+    productOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/productObject'
+    productObject:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        categories:
+          type: array
+          items:
+            type: string
+          description: Category ID-s of the product in the shop's database
+          example:
+          - '42'
+          - '13'
+        id:
+          type: string
+          description: The ID of the product in the shop's database.
+          example: '91'
+        sku:
+          type: string
+          description: Unique product identifier from the shop.
+          example: CM01-R
+        imageUrl:
+          type: string
+          description: Absolute URL to the cover image of the product.
+          example: http://shop-tavan.customerboard.co/wp-content/uploads/2018/02/91.jpg
+        name:
+          type: string
+          description: The name of the product, as displayed in the shop.
+          example: Rare unique blue shirt
+        price:
+          type: number
+          description: Price of the product. (Price is required, if there's no option defined.)
+          example: 23.65
+        url:
+          type: string
+          description: Landing page of the product within the shop.
+          example: http://shop-tavan.customerboard.co/product/rare-unique-blue-shirt/
+        options:
+          type: array
+          description: Product options/variations. (options are merged, not overwritten)
+          items:
+            type: object
+            description: Product option (size, color, variant, etc.) is not mandatory.
+            required:
+            - id
+            - name
+            - price
+            properties:
+              id:
+                type: string
+                description: The ID of the product option in the shop's database.
+                example: '52'
+              sku:
+                type: string
+                description: Unique idenrifier from the shop.
+                example: CM01-W
+              name:
+                type: string
+                description: The name/title of the option as displayed in the shop.
+                example: On Sale - size XS
+              price:
+                type: number
+                description: Price of the option for this product.
+                example: 15.99
+              imageUrl:
+                type: string
+                description: Absolute URL to the cover image of the product.
+                example: http://shop-tavan.customerboard.co/wp-content/uploads/2018/02/91.jpg
+    basicBackendObject:
+      type: object
+      required:
+      - time
+      - token
+      properties:
+        time:
+          type: integer
+          description: Integer representation of the event time (milliseconds from 1970).
+          example: 1518004715732
+        token:
+          type: string
+          description: Shop API token.
+          example: ccc111ddddaaaaac
+        platform:
+          type: string
+          description: Shop platform versioning.
+          example: Wordpress 4.2.7 / Woocommerce 3.5
+        pluginVersion:
+          type: string
+          description: Metrilo plugin version.
+          example: 1.1.0
+    productBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/productObject'
+  responses:
+    success:
+      description: Success response.
+    errorUnauthorized:
+      description: Project token is invalid.
+    badGateway:
+      description: Error from server accepting request.
+    internalServerError:
+      description: Error from server while processing request.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
+    errorBadRequest:
+      description: Bad request from client.
+    errorPaymentRequired:
+      description: Project requires payment.

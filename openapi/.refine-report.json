@@ -4,16 +4,36 @@
     "_original/metrilo-tracking-api-openapi.yml"
   ],
   "outputs": [
-    "metrilo-api-api-openapi.yml"
+    "metrilo-category-api-openapi.yml",
+    "metrilo-customer-api-openapi.yml",
+    "metrilo-order-api-openapi.yml",
+    "metrilo-product-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "1 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "metrilo-tracking-api-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /category -> Category",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /category/batch -> Category",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /customer -> Customer",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /customer/tag -> Customer",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /customer/untag -> Customer",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /customer/batch -> Customer",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /order -> Order",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /order/batch -> Order",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /product -> Product",
+    "metrilo-tracking-api-openapi.yml: tagged paths POST /product/batch -> Product",
+    "metrilo-tracking-api-openapi.yml: declared missing tag: Category",
+    "metrilo-tracking-api-openapi.yml: declared missing tag: Customer",
+    "metrilo-tracking-api-openapi.yml: declared missing tag: Order",
+    "metrilo-tracking-api-openapi.yml: declared missing tag: Product",
+    "superseded outputs removed: metrilo-api-api-openapi.yml",
+    "apis.yml register: written (+4 apis, 4 total)"
   ],
   "skipped": [
     "_original/metrilo-tracking-openapi.yml: archived document superseded by a larger archived document",
