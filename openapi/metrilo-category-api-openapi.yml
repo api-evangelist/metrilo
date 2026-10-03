@@ -72,6 +72,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    categoryBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - batch
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/categoryObject'
+    categoryIdObject:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: Unique ID of category in the shop database.
+          example: 12
     categoryObject:
       allOf:
       - $ref: '#/components/schemas/categoryIdObject'
@@ -86,35 +106,6 @@ components:
             type: string
             description: Landing page for the shop category.
             example: http://shop-tavan.customerboard.co/cagetory/clothing
-    categoryIdObject:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: Unique ID of category in the shop database.
-          example: 12
-    categoryOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/categoryObject'
-    categoryBatchOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - batch
-        properties:
-          batch:
-            type: array
-            items:
-              $ref: '#/components/schemas/categoryObject'
     basicBackendObject:
       type: object
       required:
@@ -137,18 +128,27 @@ components:
           type: string
           description: Metrilo plugin version.
           example: 1.1.0
+    categoryOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/categoryObject'
   responses:
+    internalServerError:
+      description: Error from server while processing request.
+    errorPaymentRequired:
+      description: Project requires payment.
+    errorBadRequest:
+      description: Bad request from client.
     success:
       description: Success response.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
     errorUnauthorized:
       description: Project token is invalid.
     badGateway:
       description: Error from server accepting request.
-    internalServerError:
-      description: Error from server while processing request.
-    errorForbidden:
-      description: The IP that the request came from is ignored.
-    errorBadRequest:
-      description: Bad request from client.
-    errorPaymentRequired:
-      description: Project requires payment.

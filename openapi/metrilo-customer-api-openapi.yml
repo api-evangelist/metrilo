@@ -130,6 +130,46 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    customerUntagOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerUntagObject'
+    customerUntagObject:
+      allOf:
+      - $ref: '#/components/schemas/visitorIdentityObject'
+      - type: object
+        required:
+        - createdAt
+        - email
+        - tags
+        properties:
+          email:
+            type: string
+            description: The email of the customer.
+            example: johnybravo@metrilo.com
+          tags:
+            type: array
+            items:
+              type: string
+              description: Tag labels that are removed from the customer in Metrilo. (missing tags are omitted)
+              example:
+              - early_subscriber
+              - big_spender
+    visitorIdentityObject:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          description: Visitor's email address.
+          example: johnybravo@metrilo.com
     customerObject:
       allOf:
       - $ref: '#/components/schemas/visitorIdentityObject'
@@ -161,98 +201,6 @@ components:
               example:
               - early_subscriber
               - big_spender
-    customerBatchOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - batch
-        properties:
-          batch:
-            type: array
-            items:
-              $ref: '#/components/schemas/customerObject'
-    visitorIdentityObject:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-          description: Visitor's email address.
-          example: johnybravo@metrilo.com
-    customerUntagOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/customerUntagObject'
-    customerTagOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/customerTagObject'
-    customerTagObject:
-      allOf:
-      - $ref: '#/components/schemas/visitorIdentityObject'
-      - type: object
-        required:
-        - createdAt
-        - email
-        - tags
-        properties:
-          email:
-            type: string
-            description: The email of the customer.
-            example: johnybravo@metrilo.com
-          tags:
-            type: array
-            items:
-              type: string
-              description: Tag labels that are assigned to the customer in Metrilo. (tags are merged, not overwritten)
-              example:
-              - early_subscriber
-              - big_spender
-    customerUntagObject:
-      allOf:
-      - $ref: '#/components/schemas/visitorIdentityObject'
-      - type: object
-        required:
-        - createdAt
-        - email
-        - tags
-        properties:
-          email:
-            type: string
-            description: The email of the customer.
-            example: johnybravo@metrilo.com
-          tags:
-            type: array
-            items:
-              type: string
-              description: Tag labels that are removed from the customer in Metrilo. (missing tags are omitted)
-              example:
-              - early_subscriber
-              - big_spender
-    customerOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/customerObject'
     basicBackendObject:
       type: object
       required:
@@ -275,18 +223,70 @@ components:
           type: string
           description: Metrilo plugin version.
           example: 1.1.0
+    customerTagOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerTagObject'
+    customerOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerObject'
+    customerTagObject:
+      allOf:
+      - $ref: '#/components/schemas/visitorIdentityObject'
+      - type: object
+        required:
+        - createdAt
+        - email
+        - tags
+        properties:
+          email:
+            type: string
+            description: The email of the customer.
+            example: johnybravo@metrilo.com
+          tags:
+            type: array
+            items:
+              type: string
+              description: Tag labels that are assigned to the customer in Metrilo. (tags are merged, not overwritten)
+              example:
+              - early_subscriber
+              - big_spender
+    customerBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - batch
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/customerObject'
   responses:
+    internalServerError:
+      description: Error from server while processing request.
+    errorPaymentRequired:
+      description: Project requires payment.
+    errorBadRequest:
+      description: Bad request from client.
     success:
       description: Success response.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
     errorUnauthorized:
       description: Project token is invalid.
     badGateway:
       description: Error from server accepting request.
-    internalServerError:
-      description: Error from server while processing request.
-    errorBadRequest:
-      description: Bad request from client.
-    errorForbidden:
-      description: The IP that the request came from is ignored.
-    errorPaymentRequired:
-      description: Project requires payment.

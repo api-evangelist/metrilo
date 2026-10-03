@@ -72,15 +72,38 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    productOperationObject:
+    basicBackendObject:
+      type: object
+      required:
+      - time
+      - token
+      properties:
+        time:
+          type: integer
+          description: Integer representation of the event time (milliseconds from 1970).
+          example: 1518004715732
+        token:
+          type: string
+          description: Shop API token.
+          example: ccc111ddddaaaaac
+        platform:
+          type: string
+          description: Shop platform versioning.
+          example: Wordpress 4.2.7 / Woocommerce 3.5
+        pluginVersion:
+          type: string
+          description: Metrilo plugin version.
+          example: 1.1.0
+    productBatchOperationObject:
       allOf:
       - $ref: '#/components/schemas/basicBackendObject'
       - required:
         - params
         properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/productObject'
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/productObject'
     productObject:
       type: object
       required:
@@ -150,50 +173,27 @@ components:
                 type: string
                 description: Absolute URL to the cover image of the product.
                 example: http://shop-tavan.customerboard.co/wp-content/uploads/2018/02/91.jpg
-    basicBackendObject:
-      type: object
-      required:
-      - time
-      - token
-      properties:
-        time:
-          type: integer
-          description: Integer representation of the event time (milliseconds from 1970).
-          example: 1518004715732
-        token:
-          type: string
-          description: Shop API token.
-          example: ccc111ddddaaaaac
-        platform:
-          type: string
-          description: Shop platform versioning.
-          example: Wordpress 4.2.7 / Woocommerce 3.5
-        pluginVersion:
-          type: string
-          description: Metrilo plugin version.
-          example: 1.1.0
-    productBatchOperationObject:
+    productOperationObject:
       allOf:
       - $ref: '#/components/schemas/basicBackendObject'
       - required:
         - params
         properties:
-          batch:
-            type: array
-            items:
-              $ref: '#/components/schemas/productObject'
+          params:
+            allOf:
+            - $ref: '#/components/schemas/productObject'
   responses:
-    success:
-      description: Success response.
-    errorUnauthorized:
-      description: Project token is invalid.
-    badGateway:
-      description: Error from server accepting request.
     internalServerError:
       description: Error from server while processing request.
-    errorForbidden:
-      description: The IP that the request came from is ignored.
-    errorBadRequest:
-      description: Bad request from client.
+    badGateway:
+      description: Error from server accepting request.
     errorPaymentRequired:
       description: Project requires payment.
+    errorBadRequest:
+      description: Bad request from client.
+    success:
+      description: Success response.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
+    errorUnauthorized:
+      description: Project token is invalid.

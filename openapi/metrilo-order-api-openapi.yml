@@ -71,22 +71,26 @@ paths:
       summary: Order batch operation
       x-summary-source: derived
 components:
-  responses:
-    success:
-      description: Success response.
-    badGateway:
-      description: Error from server accepting request.
-    internalServerError:
-      description: Error from server while processing request.
-    errorUnauthorized:
-      description: Project token is invalid.
-    errorForbidden:
-      description: The IP that the request came from is ignored.
-    errorBadRequest:
-      description: Bad request from client.
-    errorPaymentRequired:
-      description: Project requires payment.
   schemas:
+    orderOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/orderObject'
+    orderBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/orderObject'
     orderObject:
       type: object
       required:
@@ -171,25 +175,6 @@ components:
           type: string
           description: The IP address of the customer when they placed the order.
           example: 111.222.333.444
-    orderOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/orderObject'
-    orderBatchOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - required:
-        - params
-        properties:
-          batch:
-            type: array
-            items:
-              $ref: '#/components/schemas/orderObject'
     basicBackendObject:
       type: object
       required:
@@ -212,3 +197,18 @@ components:
           type: string
           description: Metrilo plugin version.
           example: 1.1.0
+  responses:
+    internalServerError:
+      description: Error from server while processing request.
+    errorPaymentRequired:
+      description: Project requires payment.
+    errorBadRequest:
+      description: Bad request from client.
+    success:
+      description: Success response.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
+    errorUnauthorized:
+      description: Project token is invalid.
+    badGateway:
+      description: Error from server accepting request.

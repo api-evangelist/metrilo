@@ -9,9 +9,7 @@
     "metrilo-order-api-openapi.yml",
     "metrilo-product-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -32,11 +30,13 @@
     "metrilo-tracking-api-openapi.yml: declared missing tag: Customer",
     "metrilo-tracking-api-openapi.yml: declared missing tag: Order",
     "metrilo-tracking-api-openapi.yml: declared missing tag: Product",
-    "superseded outputs removed: metrilo-api-api-openapi.yml",
-    "apis.yml register: written (+4 apis, 4 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "_original/metrilo-tracking-openapi.yml: archived document superseded by a larger archived document",
-    "metrilo-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "metrilo-category-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metrilo-customer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metrilo-order-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metrilo-product-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
