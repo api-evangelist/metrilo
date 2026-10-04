@@ -129,8 +129,43 @@ paths:
       summary: Customer batch operation
       x-summary-source: derived
 components:
+  responses:
+    errorForbidden:
+      description: The IP that the request came from is ignored.
+    badGateway:
+      description: Error from server accepting request.
+    errorBadRequest:
+      description: Bad request from client.
+    success:
+      description: Success response.
+    errorPaymentRequired:
+      description: Project requires payment.
+    errorUnauthorized:
+      description: Project token is invalid.
+    internalServerError:
+      description: Error from server while processing request.
   schemas:
-    customerUntagOperationObject:
+    customerBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - batch
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/customerObject'
+    visitorIdentityObject:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          description: Visitor's email address.
+          example: johnybravo@metrilo.com
+    customerTagOperationObject:
       allOf:
       - $ref: '#/components/schemas/basicBackendObject'
       - type: object
@@ -139,7 +174,29 @@ components:
         properties:
           params:
             allOf:
-            - $ref: '#/components/schemas/customerUntagObject'
+            - $ref: '#/components/schemas/customerTagObject'
+    basicBackendObject:
+      type: object
+      required:
+      - time
+      - token
+      properties:
+        time:
+          type: integer
+          description: Integer representation of the event time (milliseconds from 1970).
+          example: 1518004715732
+        token:
+          type: string
+          description: Shop API token.
+          example: ccc111ddddaaaaac
+        platform:
+          type: string
+          description: Shop platform versioning.
+          example: Wordpress 4.2.7 / Woocommerce 3.5
+        pluginVersion:
+          type: string
+          description: Metrilo plugin version.
+          example: 1.1.0
     customerUntagObject:
       allOf:
       - $ref: '#/components/schemas/visitorIdentityObject'
@@ -161,15 +218,47 @@ components:
               example:
               - early_subscriber
               - big_spender
-    visitorIdentityObject:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-          description: Visitor's email address.
-          example: johnybravo@metrilo.com
+    customerOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerObject'
+    customerUntagOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - type: object
+        required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/customerUntagObject'
+    customerTagObject:
+      allOf:
+      - $ref: '#/components/schemas/visitorIdentityObject'
+      - type: object
+        required:
+        - createdAt
+        - email
+        - tags
+        properties:
+          email:
+            type: string
+            description: The email of the customer.
+            example: johnybravo@metrilo.com
+          tags:
+            type: array
+            items:
+              type: string
+              description: Tag labels that are assigned to the customer in Metrilo. (tags are merged, not overwritten)
+              example:
+              - early_subscriber
+              - big_spender
     customerObject:
       allOf:
       - $ref: '#/components/schemas/visitorIdentityObject'
@@ -201,92 +290,3 @@ components:
               example:
               - early_subscriber
               - big_spender
-    basicBackendObject:
-      type: object
-      required:
-      - time
-      - token
-      properties:
-        time:
-          type: integer
-          description: Integer representation of the event time (milliseconds from 1970).
-          example: 1518004715732
-        token:
-          type: string
-          description: Shop API token.
-          example: ccc111ddddaaaaac
-        platform:
-          type: string
-          description: Shop platform versioning.
-          example: Wordpress 4.2.7 / Woocommerce 3.5
-        pluginVersion:
-          type: string
-          description: Metrilo plugin version.
-          example: 1.1.0
-    customerTagOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/customerTagObject'
-    customerOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/customerObject'
-    customerTagObject:
-      allOf:
-      - $ref: '#/components/schemas/visitorIdentityObject'
-      - type: object
-        required:
-        - createdAt
-        - email
-        - tags
-        properties:
-          email:
-            type: string
-            description: The email of the customer.
-            example: johnybravo@metrilo.com
-          tags:
-            type: array
-            items:
-              type: string
-              description: Tag labels that are assigned to the customer in Metrilo. (tags are merged, not overwritten)
-              example:
-              - early_subscriber
-              - big_spender
-    customerBatchOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - type: object
-        required:
-        - batch
-        properties:
-          batch:
-            type: array
-            items:
-              $ref: '#/components/schemas/customerObject'
-  responses:
-    internalServerError:
-      description: Error from server while processing request.
-    errorPaymentRequired:
-      description: Project requires payment.
-    errorBadRequest:
-      description: Bad request from client.
-    success:
-      description: Success response.
-    errorForbidden:
-      description: The IP that the request came from is ignored.
-    errorUnauthorized:
-      description: Project token is invalid.
-    badGateway:
-      description: Error from server accepting request.

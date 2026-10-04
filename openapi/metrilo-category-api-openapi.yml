@@ -71,6 +71,21 @@ paths:
       summary: Category batch operation
       x-summary-source: derived
 components:
+  responses:
+    errorForbidden:
+      description: The IP that the request came from is ignored.
+    errorBadRequest:
+      description: Bad request from client.
+    badGateway:
+      description: Error from server accepting request.
+    success:
+      description: Success response.
+    errorPaymentRequired:
+      description: Project requires payment.
+    errorUnauthorized:
+      description: Project token is invalid.
+    internalServerError:
+      description: Error from server while processing request.
   schemas:
     categoryBatchOperationObject:
       allOf:
@@ -83,29 +98,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/categoryObject'
-    categoryIdObject:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: Unique ID of category in the shop database.
-          example: 12
-    categoryObject:
-      allOf:
-      - $ref: '#/components/schemas/categoryIdObject'
-      - required:
-        - name
-        properties:
-          name:
-            type: string
-            description: Category display name in the shop.
-            example: Clothing
-          url:
-            type: string
-            description: Landing page for the shop category.
-            example: http://shop-tavan.customerboard.co/cagetory/clothing
     basicBackendObject:
       type: object
       required:
@@ -137,18 +129,26 @@ components:
           params:
             allOf:
             - $ref: '#/components/schemas/categoryObject'
-  responses:
-    internalServerError:
-      description: Error from server while processing request.
-    errorPaymentRequired:
-      description: Project requires payment.
-    errorBadRequest:
-      description: Bad request from client.
-    success:
-      description: Success response.
-    errorForbidden:
-      description: The IP that the request came from is ignored.
-    errorUnauthorized:
-      description: Project token is invalid.
-    badGateway:
-      description: Error from server accepting request.
+    categoryObject:
+      allOf:
+      - $ref: '#/components/schemas/categoryIdObject'
+      - required:
+        - name
+        properties:
+          name:
+            type: string
+            description: Category display name in the shop.
+            example: Clothing
+          url:
+            type: string
+            description: Landing page for the shop category.
+            example: http://shop-tavan.customerboard.co/cagetory/clothing
+    categoryIdObject:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: Unique ID of category in the shop database.
+          example: 12
