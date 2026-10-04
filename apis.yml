@@ -96,6 +96,8 @@ apis:
   humanURL: https://github.com/Metrilo/custom-integration
   baseURL: https://trk.mtrl.me/v2
   tags:
+  - Customers
+  tags_raw:
   - Customer
   properties:
   - type: OpenAPI
@@ -139,6 +141,9 @@ apis:
   - type: ToolCrosswalk
     url: mcp/metrilo-tool-crosswalk.yml
 common:
+- type: CapabilityMap
+  url: capabilities/metrilo-capability-edges.yml
+  name: Metrilo Business Capability Map
 - type: Website
   url: https://www.metrilo.com/
 - type: AgenticAccess
