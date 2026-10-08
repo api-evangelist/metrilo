@@ -141,6 +141,8 @@ apis:
   - type: ToolCrosswalk
     url: mcp/metrilo-tool-crosswalk.yml
 common:
+- type: RateLimits
+  url: rate-limits/metrilo-rate-limits.yml
 - type: CapabilityMap
   url: capabilities/metrilo-capability-edges.yml
   name: Metrilo Business Capability Map
