@@ -1,7 +1,6 @@
-generated: '2026-08-13'
+generated: '2026-09-24'
 method: generated
-source: openapi/metrilo-categories-api-openapi.yml, openapi/metrilo-customers-api-openapi.yml,
-  openapi/metrilo-orders-api-openapi.yml, openapi/metrilo-products-api-openapi.yml
+source: openapi/metrilo-api-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
@@ -16,7 +15,7 @@ summary:
 operations:
 - path: /category
   method: post
-  operationId: createCategory
+  operationId: categoryOperation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -32,7 +31,7 @@ operations:
     audit: required
 - path: /category/batch
   method: post
-  operationId: batchCategories
+  operationId: categoryBatchOperation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -48,23 +47,7 @@ operations:
     audit: required
 - path: /customer
   method: post
-  operationId: createCustomer
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /customer/batch
-  method: post
-  operationId: batchCustomers
+  operationId: customerOperation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -80,7 +63,7 @@ operations:
     audit: required
 - path: /customer/tag
   method: post
-  operationId: tagCustomer
+  operationId: customerTagOperation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -96,7 +79,23 @@ operations:
     audit: required
 - path: /customer/untag
   method: post
-  operationId: untagCustomer
+  operationId: customerUntagOperation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /customer/batch
+  method: post
+  operationId: customerBatchOperation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -112,7 +111,7 @@ operations:
     audit: required
 - path: /order
   method: post
-  operationId: createOrder
+  operationId: orderOperation
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -130,7 +129,7 @@ operations:
     audit: required
 - path: /order/batch
   method: post
-  operationId: batchOrders
+  operationId: orderBatchOperation
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -148,7 +147,7 @@ operations:
     audit: required
 - path: /product
   method: post
-  operationId: createProduct
+  operationId: productOperation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -164,7 +163,7 @@ operations:
     audit: required
 - path: /product/batch
   method: post
-  operationId: batchProducts
+  operationId: productBatchOperation
   x-agentic-access:
     action-class: acting
     consequence: write
