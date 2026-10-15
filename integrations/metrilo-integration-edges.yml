@@ -11,6 +11,7 @@ checked:
 - https://n8n.io/integrations/metrilo/
 - https://zapier.com/apps/metrilo/integrations
 - shopify/integrations/shopify-integration-edges.yml
+- wordpress/integrations/wordpress-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -32,4 +33,21 @@ edges:
   detected_by: mirror-platform-listings.py
   publisher_verified:
   - Built for Shopify
+- partner_name: WordPress (own)
+  partner: wordpress
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://wordpress.org/plugins/metrilo-woocommerce-integration/
+  mirror_of: wordpress/integrations/wordpress-integration-edges.yml
+  apps:
+  - Metrilo – WooCommerce Growth Platform
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: WordPress plugin
 templates: []

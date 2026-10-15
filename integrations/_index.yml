@@ -15,3 +15,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: metrilo-wordpress-own
+  label: WordPress (own)
+  partner: wordpress
+  partner_name: WordPress (own)
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/metrilo-woocommerce-integration/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
