@@ -72,21 +72,62 @@ paths:
       x-summary-source: derived
 components:
   responses:
-    errorForbidden:
-      description: The IP that the request came from is ignored.
     errorBadRequest:
       description: Bad request from client.
-    badGateway:
-      description: Error from server accepting request.
     success:
       description: Success response.
-    errorPaymentRequired:
-      description: Project requires payment.
-    errorUnauthorized:
-      description: Project token is invalid.
     internalServerError:
       description: Error from server while processing request.
+    badGateway:
+      description: Error from server accepting request.
+    errorUnauthorized:
+      description: Project token is invalid.
+    errorPaymentRequired:
+      description: Project requires payment.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
   schemas:
+    orderBatchOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          batch:
+            type: array
+            items:
+              $ref: '#/components/schemas/orderObject'
+    orderOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/orderObject'
+    basicBackendObject:
+      type: object
+      required:
+      - time
+      - token
+      properties:
+        time:
+          type: integer
+          description: Integer representation of the event time (milliseconds from 1970).
+          example: 1518004715732
+        token:
+          type: string
+          description: Shop API token.
+          example: ccc111ddddaaaaac
+        platform:
+          type: string
+          description: Shop platform versioning.
+          example: Wordpress 4.2.7 / Woocommerce 3.5
+        pluginVersion:
+          type: string
+          description: Metrilo plugin version.
+          example: 1.1.0
     orderObject:
       type: object
       required:
@@ -171,44 +212,3 @@ components:
           type: string
           description: The IP address of the customer when they placed the order.
           example: 111.222.333.444
-    basicBackendObject:
-      type: object
-      required:
-      - time
-      - token
-      properties:
-        time:
-          type: integer
-          description: Integer representation of the event time (milliseconds from 1970).
-          example: 1518004715732
-        token:
-          type: string
-          description: Shop API token.
-          example: ccc111ddddaaaaac
-        platform:
-          type: string
-          description: Shop platform versioning.
-          example: Wordpress 4.2.7 / Woocommerce 3.5
-        pluginVersion:
-          type: string
-          description: Metrilo plugin version.
-          example: 1.1.0
-    orderOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/orderObject'
-    orderBatchOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - required:
-        - params
-        properties:
-          batch:
-            type: array
-            items:
-              $ref: '#/components/schemas/orderObject'

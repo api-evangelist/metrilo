@@ -72,20 +72,20 @@ paths:
       x-summary-source: derived
 components:
   responses:
-    errorForbidden:
-      description: The IP that the request came from is ignored.
     errorBadRequest:
       description: Bad request from client.
-    badGateway:
-      description: Error from server accepting request.
     success:
       description: Success response.
-    errorPaymentRequired:
-      description: Project requires payment.
-    errorUnauthorized:
-      description: Project token is invalid.
     internalServerError:
       description: Error from server while processing request.
+    badGateway:
+      description: Error from server accepting request.
+    errorUnauthorized:
+      description: Project token is invalid.
+    errorPaymentRequired:
+      description: Project requires payment.
+    errorForbidden:
+      description: The IP that the request came from is ignored.
   schemas:
     categoryBatchOperationObject:
       allOf:
@@ -98,6 +98,38 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/categoryObject'
+    categoryIdObject:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: Unique ID of category in the shop database.
+          example: 12
+    categoryObject:
+      allOf:
+      - $ref: '#/components/schemas/categoryIdObject'
+      - required:
+        - name
+        properties:
+          name:
+            type: string
+            description: Category display name in the shop.
+            example: Clothing
+          url:
+            type: string
+            description: Landing page for the shop category.
+            example: http://shop-tavan.customerboard.co/cagetory/clothing
+    categoryOperationObject:
+      allOf:
+      - $ref: '#/components/schemas/basicBackendObject'
+      - required:
+        - params
+        properties:
+          params:
+            allOf:
+            - $ref: '#/components/schemas/categoryObject'
     basicBackendObject:
       type: object
       required:
@@ -120,35 +152,3 @@ components:
           type: string
           description: Metrilo plugin version.
           example: 1.1.0
-    categoryOperationObject:
-      allOf:
-      - $ref: '#/components/schemas/basicBackendObject'
-      - required:
-        - params
-        properties:
-          params:
-            allOf:
-            - $ref: '#/components/schemas/categoryObject'
-    categoryObject:
-      allOf:
-      - $ref: '#/components/schemas/categoryIdObject'
-      - required:
-        - name
-        properties:
-          name:
-            type: string
-            description: Category display name in the shop.
-            example: Clothing
-          url:
-            type: string
-            description: Landing page for the shop category.
-            example: http://shop-tavan.customerboard.co/cagetory/clothing
-    categoryIdObject:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: Unique ID of category in the shop database.
-          example: 12
